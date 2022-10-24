@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4A33108E-871F-444A-9B65-C5538E847C17}") = "Media", "..\Media.prj\Media.vcxproj", "{C8A0732D-F765-4658-A8BE-78D13A057A91}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83} = {5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83}
+	EndProjectSection
+EndProject
+Project("{4A33108E-871F-444A-9B65-C5538E847C17}") = "Library", "..\..\Library\Library.prj\Library.vcxproj", "{733407DB-9906-46CD-A9B1-771E6799E770}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83} = {5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83}
+	EndProjectSection
+EndProject
+Project("{469D77CD-8CD3-402F-80E5-D1C194175A23}") = "MediaWix", "..\Media.wix\MediaWix.wixproj", "{C2D64A12-B733-4252-9C42-065BB9428138}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83} = {5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83}
+		{C8A0732D-F765-4658-A8BE-78D13A057A91} = {C8A0732D-F765-4658-A8BE-78D13A057A91}
+		{733407DB-9906-46CD-A9B1-771E6799E770} = {733407DB-9906-46CD-A9B1-771E6799E770}
+	EndProjectSection
+EndProject
+Project("{4A33108E-871F-444A-9B65-C5538E847C17}") = "MediaHlp", "..\Media.hlp\MediaHlp.vcxproj", "{5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8A0732D-F765-4658-A8BE-78D13A057A91}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C8A0732D-F765-4658-A8BE-78D13A057A91}.Debug|Win32.Build.0 = Debug|Win32
+		{C8A0732D-F765-4658-A8BE-78D13A057A91}.Release|Win32.ActiveCfg = Release|Win32
+		{C8A0732D-F765-4658-A8BE-78D13A057A91}.Release|Win32.Build.0 = Release|Win32
+		{733407DB-9906-46CD-A9B1-771E6799E770}.Debug|Win32.ActiveCfg = Debug|Win32
+		{733407DB-9906-46CD-A9B1-771E6799E770}.Debug|Win32.Build.0 = Debug|Win32
+		{733407DB-9906-46CD-A9B1-771E6799E770}.Release|Win32.ActiveCfg = Release|Win32
+		{733407DB-9906-46CD-A9B1-771E6799E770}.Release|Win32.Build.0 = Release|Win32
+		{C2D64A12-B733-4252-9C42-065BB9428138}.Debug|Win32.ActiveCfg = Debug|x86
+		{C2D64A12-B733-4252-9C42-065BB9428138}.Release|Win32.ActiveCfg = Release|x86
+		{C2D64A12-B733-4252-9C42-065BB9428138}.Release|Win32.Build.0 = Release|x86
+		{5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83}.Debug|Win32.Build.0 = Debug|Win32
+		{5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83}.Release|Win32.ActiveCfg = Release|Win32
+		{5CF611C6-EAF6-4ED3-A5AD-F1E6D8D1FF83}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {744944DB-E8FA-4084-B069-EA5F4E850B46}
+	EndGlobalSection
+EndGlobal
