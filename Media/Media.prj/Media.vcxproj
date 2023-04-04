@@ -61,16 +61,16 @@
       <Optimization>MaxSpeed</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile />
+      <PrecompiledHeaderFile/>
       <AdditionalIncludeDirectories>
         $(ProjectDir);$(SolutionDir)..\..\Library\Library.prj\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)
       </AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <BasicRuntimeChecks />
+      <BasicRuntimeChecks/>
       <FunctionLevelLinking>false</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile />
+      <PrecompiledHeaderOutputFile/>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <SupportJustMyCode>false</SupportJustMyCode>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -104,7 +104,7 @@
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile />
+      <PrecompiledHeaderFile/>
       <AdditionalIncludeDirectories>
         $(ProjectDir);$(SolutionDir)..\..\Library\Library.prj\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)
       </AdditionalIncludeDirectories>
@@ -114,8 +114,8 @@
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <PrecompiledHeaderOutputFile />
-      <BasicRuntimeChecks />
+      <PrecompiledHeaderOutputFile/>
+      <BasicRuntimeChecks/>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -126,7 +126,7 @@
       <AdditionalDependencies>Htmlhelp.lib</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
-      <ProgramDatabaseFile />
+      <ProgramDatabaseFile/>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -143,8 +143,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Library\Extras\AboutDlg.h" />
-    <ClInclude Include="..\..\Library\Extras\ExtraResource.h" />
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h" />
+    <ClInclude Include="..\..\Library\Extras\ResourceExtra.h" />
+    <ClInclude Include="..\..\Library\Extras\RptOrientDlgOne.h" />
     <ClInclude Include="DelQstnDlg.h" />
     <ClInclude Include="EditQstnDlg.h" />
     <ClInclude Include="FindDlg.h" />
@@ -164,6 +165,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp" />
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp" />
+    <ClCompile Include="..\..\Library\Extras\RptOrientDlgOne.cpp" />
     <ClCompile Include="DelQstnDlg.cpp" />
     <ClCompile Include="EditQstnDlg.cpp" />
     <ClCompile Include="FindDlg.cpp" />
@@ -182,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Library\Extras\AboutDlg.rc2" />
+    <None Include="..\..\Library\Extras\RptOrientOne.rc2" />
     <None Include="res\Media.rc2" />
     <None Include="..\..\Library\Extras\Options.rc2" />
     <None Include="..\README.md" />
@@ -191,11 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Media.ico" />
-    <Image Include="res\Media01.ico" />
-    <Image Include="res\ShortToolbar.bmp" />
-    <Image Include="res\Toolbar01.bmp" />
-    <Image Include="res\Toolbar02.bmp" />
-    <Image Include="res\Toolbar14.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Library\Library.prj\Library.vcxproj">

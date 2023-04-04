@@ -6,7 +6,7 @@
 #include "CSVLex.h"
 #include "CSVOut.h"
 #include "Date.h"
-#include "Device.h"
+#include "DevBase.h"
 #include "ExpandableP.h"
 #include "IterT.h"
 #include "RegExpr.h"

@@ -65,7 +65,6 @@ public:
   afx_msg void onEditMedia();
   afx_msg void onDelMedia();
   afx_msg void onRefresh();
-  afx_msg void OnOptions();
   afx_msg void onFileSave();
   };
 

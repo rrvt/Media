@@ -8,7 +8,7 @@
 #include "CopyFile.h"
 #include "DelQstnDlg.h"
 #include "EditQstnDlg.h"
-#include "ExtraResource.h"
+#include "ResourceExtra.h"
 #include "filename.h"
 #include "FindDlg.h"
 #include "GetPathDlg.h"
@@ -17,7 +17,6 @@
 #include "MediaDlg.h"
 #include "MediaView.h"
 #include "NotePad.h"
-#include "Options.h"
 #include "Resource.h"
 
 
@@ -46,7 +45,6 @@ BEGIN_MESSAGE_MAP(MediaDoc, CDoc)
   ON_COMMAND(ID_DelMedia,  &onDelMedia)
   ON_COMMAND(ID_Refresh,   &onRefresh)
   ON_COMMAND(ID_File_Save, &onFileSave)
-  ON_COMMAND(ID_Options,   &OnOptions)
 END_MESSAGE_MAP()
 
 
@@ -195,7 +193,7 @@ StrSrchFld srchFld;
 void MediaDoc::onRefresh() {store.display();   display(NotePadSrc);}
 
 
-void MediaDoc::OnOptions() {options(view());  view()->setOrientation(options.orient);}
+//void MediaDoc::OnOptions() {options(view());  view()->setOrientation(options.orient);}
 
 
 void MediaDoc::display(DataSource ds) {dataSource = ds; invalidate();}
@@ -220,7 +218,7 @@ DataSource stk = dataSource;
 void MediaDoc::saveData(DataSource src) {
 DataSource stk = dataSource;
 
-  backupFile(dataPath, 10);   dataSource = src;   OnSaveDocument(dataPath);
+  backupFile(10);   dataSource = src;   OnSaveDocument(dataPath);
 
   dataSource = stk;
   }

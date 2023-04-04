@@ -29,7 +29,9 @@
 #define ID_DelMedia                     403
 #define ID_Refresh                      404
 #define ID_File_Save                    405
-#define ID_Help                         406
+#define ID_Options                      406
+#define ID_App_About                    407
+#define ID_Help                         408
 
 
 // Next default values for new objects

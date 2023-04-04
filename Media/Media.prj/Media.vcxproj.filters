@@ -39,9 +39,6 @@
     <ClInclude Include="Store.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Library\Extras\ExtraResource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -67,6 +64,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DelQstnDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Library\Extras\RptOrientDlgOne.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Library\Extras\ResourceExtra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -113,6 +116,9 @@
     <ClCompile Include="DelQstnDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Library\Extras\RptOrientDlgOne.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Media.rc">
@@ -135,24 +141,15 @@
     </None>
     <None Include="C:\Users\rrvt\AppData\Roaming\Media\Media.ini" />
     <None Include="C:\Users\rrvt\AppData\Roaming\Media\Store.csv" />
+    <None Include="..\..\Library\Extras\RptOrientOne.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\ShortToolbar.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\Media01.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\Media.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\Toolbar01.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\Toolbar02.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\Toolbar14.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

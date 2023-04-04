@@ -5,11 +5,10 @@
 #include "Media.h"
 #include "AboutDlg.h"
 #include "Channels.h"
-#include "ExtraResource.h"
+#include "ResourceExtra.h"
 #include "IniFile.h"
 #include "MainFrame.h"
 #include "NotePad.h"
-#include "Options.h"
 #include "MediaDoc.h"
 #include "MediaView.h"
 
@@ -21,7 +20,7 @@ IniFile iniFile;
 // Media
 
 BEGIN_MESSAGE_MAP(Media, CWinAppEx)
-  ON_COMMAND(ID_FILE_PRINT_SETUP, &OnFilePrintSetup)
+//  ON_COMMAND(ID_FILE_PRINT_SETUP, &OnFilePrintSetup)
   ON_COMMAND(ID_Help,             &OnHelp)
   ON_COMMAND(ID_App_About,        &OnAppAbout)
 END_MESSAGE_MAP()
@@ -74,8 +73,6 @@ String path;
 
   view()->setFont(_T("Arial"), 12.0);
 
-  options.load();    view()->setOrientation(options.orient);
-
   channels.load();
 
   doc()->loadData(path);
@@ -84,7 +81,7 @@ String path;
   }
 
 
-
+#if 0
 void Media::OnFilePrintSetup() {
 PrtrOrient orient;
 
@@ -96,7 +93,7 @@ PrtrOrient orient;
 
   options.setOrient(orient);   view()->setOrientation(options.orient);
   }
-
+#endif
 
 int Media::ExitInstance() {
 
