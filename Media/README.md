@@ -36,6 +36,10 @@ Execute the msi file to install the app.
 
 ## Updates
 
+### Update 12/25/23
+
+Modify ExpandableP and subsequent ripple.
+
 ### Update 7/1/23
 
 Update Library.
