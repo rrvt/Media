@@ -12,7 +12,7 @@
 #include "filename.h"
 #include "FindDlg.h"
 #include "GetPathDlg.h"
-#include "match.h"
+#include "RegExpr.h"
 #include "Media.h"
 #include "MediaDlg.h"
 #include "MediaView.h"
@@ -83,10 +83,8 @@ Datum    d;
 
   if (dlg.DoModal() == IDOK) {
 
-    channels.add(dlg.channel.str());
-
     d.title   = dlg.title;
-    d.channel = dlg.channel;
+    d.channel = dlg.channel;   channels.add(d.channel);
     Date x    = dlg.date;
     d.date    = dlg.date;
     d.comment = dlg.comment; d.bobPresent = dlg.bobPresent;  d.maureenPresent = dlg.maureenPresent;

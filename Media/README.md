@@ -36,6 +36,11 @@ Execute the msi file to install the app.
 
 ## Updates
 
+### Update 1/2/24
+
+Added logic to only allow unique channels to inhabit the drop down list.  Also some other changes to the
+Library.
+
 ### Update 12/25/23
 
 Modify ExpandableP and subsequent ripple.

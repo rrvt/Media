@@ -8,12 +8,11 @@
 Channels channels;
 
 
-void Channels::add(TCchar* name) {
-  if (!find(name)) {
-  Channel chn;
-  chn.name = name;
-  data = chn;
-  }
+void Channels::add(String& name) {
+
+  if (!isUnique(name)) return;
+
+  Channel chn;   chn.name = name;   data = chn;
   }
 
 
@@ -44,8 +43,23 @@ String  key;
   for (i = 0; i < n; i++) {
     key.format(_T("%s%03i"), KeyPrefix, i);
 
-    iniFile.read(Section, key, chn.name);   data = chn;
+    iniFile.read(Section, key, chn.name);
+
+    if (isUnique(chn.name)) data = chn;
     }
+  }
+
+
+bool Channels::isUnique(String& name) {
+int      lng    = name.length();
+int      prfLng = lng > 3 ? 3 : lng;
+String   prfx   = name.substr(0, prfLng);
+ChnIter  iter(*this);
+Channel* chn;
+
+  for (chn = iter(); chn; chn = iter++)
+                              if (prfx == chn->name.substr(0, prfLng)) {name = chn->name;   return false;}
+  return true;
   }
 
 

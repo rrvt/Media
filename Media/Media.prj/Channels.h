@@ -40,13 +40,15 @@ public:
            Channels() { }
           ~Channels() { }
 
-  void     add( TCchar* name);
+  void     add( String& name);
   Channel* find(TCchar* name);
 
   void     load();
   void     store();
 
 private:
+
+  bool     isUnique(String& name);
 
   // returns either a pointer to datum at index i in array or zero
 

@@ -28,9 +28,7 @@ Channel* chn;
 
   CDialogEx::OnInitDialog();
 
-  for (chn = iter(); chn; chn = iter++) {
-    channelCtl.AddString(chn->name);
-    }
+  for (chn = iter(); chn; chn = iter++) channelCtl.AddString(chn->name);
 
   return TRUE;
   }
@@ -49,11 +47,7 @@ void MediaDlg::DoDataExchange(CDataExchange* pDX) {
   }
 
 
-void MediaDlg::OnOK() {
-  // TODO: Add your specialized code here and/or call the base class
-
-  CDialogEx::OnOK();
-  }
+void MediaDlg::OnOK() {CDialogEx::OnOK();}
 
 
 
