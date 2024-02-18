@@ -7,5 +7,9 @@
   </ProjectOutputs>
   <ContentFiles />
   <SatelliteDlls />
-  <NonRecipeFileRefs />
+  <NonRecipeFileRefs>
+    <NonRecipeFileRef>
+      <FullPath>D:\Sources\Media\Media.hlp\MediaHlp.vcxproj</FullPath>
+    </NonRecipeFileRef>
+  </NonRecipeFileRefs>
 </Project>

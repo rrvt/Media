@@ -146,9 +146,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\Media01.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\Media.ico">
       <Filter>Resource Files</Filter>
     </Image>

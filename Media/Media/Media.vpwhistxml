@@ -1,7 +1,7 @@
 <vpwhist>
 	<active_config>
 		<p n="..\Media.prj\Media.vpj" v=",Release|Win32"/>
-		<p n="..\..\Library\Library.prj\Library.vpj" v=",Debug|Win32"/>
+		<p n="..\..\Library\Library.prj\Library.vpj" v=""/>
 		<p n="..\Media.wix\MediaWix.vpj" v=",Debug|x86"/>
 		<p n="..\Media.hlp\MediaHlp.vpj" v=",Debug|Win32"/>
 	</active_config>
@@ -10,13 +10,11 @@
 		<p n="ActiveSolutionConfig" v="Release|Win32"/>
 	</global>
 	<project_dates>
-		<p n="..\Media.prj\Media.vcxproj" v="20231231233821740"/>
-		<p n="..\..\Library\Library.prj\Library.vcxproj" v="20240101012105810"/>
+		<p n="..\Media.prj\Media.vcxproj" v="20240126072325523"/>
 		<p n="..\Media.wix\MediaWix.wixproj" v="20240103050929875"/>
 		<p n="..\Media.hlp\MediaHlp.vcxproj" v="20220917205410396"/>
 	</project_dates>
 	<tree_expansion scroll="0">
-		<p n="..\..\Library\Library.prj\Library.vcxproj" v="+@"/>
 		<p n="..\Media.prj\Media.vcxproj" v="-@">
 			<p n="Header Files" v="+"/>
 			<p n="Resource Files" v="+"/>
@@ -29,7 +27,7 @@
 		<monitor_configs>
 			<monitor_config v="0 0 2560 1440">
 				<screen v="2560 1440 999 6 1555 1400 0 0 N 0 0 0 0 1301 938 0"/>
-				<mdistate v="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"/>
+				<mdistate v="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"/>
 				<debug_layout version="1" state="N" fullscreen="0">
 					<toolwindowinfo>
 						<p n="_tbannotations_browser_form" f="0"/>
@@ -1077,7 +1075,7 @@
 			</monitor_config>
 			<monitor_config v="0 0 2048 1152">
 				<screen v="2048 1152 457 1 1485 1049 0 0 N 0 0 0 0 1243 744 0"/>
-				<mdistate v="AAAAAwAAAAIAAAAD2gAAAAIAMAAAAAAAAABAAAAE7gAABAIAAAAAAAAAAAAAB38AAAQ3AAAAAuoAAAQ6AAAAAvsAAAAKAAAACgAAAAgAAAAJAAAABQAAAAIAAAAAAAAABAAAAAEAAAADAAAABwAAAAb7AAAACgAAAAoAAAAJAAAACAAAAAUAAAAEAAAAAQAAAAAAAAAHAAAAAwAAAAIAAAAG/AAAAGMAAAAAVgA2ADoAOgA6AEQAOgBcAFMAbwB1AHIAYwBlAHMAXABNAGUAZABpAGEAXABNAGUAZABpAGEALgBwAHIAagBcAEMAaABhAG4AbgBlAGwAcwAuAGMAcABwAAD/////AAD8AAAAXwAAAABSADcAOgA6ADoARAA6AFwAUwBvAHUAcgBjAGUAcwBcAE0AZQBkAGkAYQBcAE0AZQBkAGkAYQAuAHAAcgBqAFwAQwBoAGEAbgBuAGUAbABzAC4AaAAA/////wAA/AAAAFsAAAAATgAzADoAOgA6AEQAOgBcAFMAbwB1AHIAYwBlAHMAXABNAGUAZABpAGEAXABNAGUAZABpAGEALgBwAHIAagBcAE0AZQBkAGkAYQAuAHIAYwAA/////wAA/AAAAGMAAAAAVgA0ADoAOgA6AEQAOgBcAFMAbwB1AHIAYwBlAHMAXABNAGUAZABpAGEAXABNAGUAZABpAGEALgBwAHIAagBcAE0AZQBkAGkAYQBEAGwAZwAuAGMAcABwAAD/////AAD8AAAAYwAAAABWADgAOgA6ADoARAA6AFwAUwBvAHUAcgBjAGUAcwBcAE0AZQBkAGkAYQBcAE0AZQBkAGkAYQAuAHAAcgBqAFwATQBlAGQAaQBhAEQAbwBjAC4AYwBwAHAAAP////8AAPwAAABJAAAAADwAOQA6ADoAOgBEADoAXABTAG8AdQByAGMAZQBzAFwATQBlAGQAaQBhAFwAUgBFAEEARABNAEUALgBtAGQAAP////8AAPwAAABdAAAAAFAAMgA6ADoAOgBEADoAXABTAG8AdQByAGMAZQBzAFwATQBlAGQAaQBhAFwATQBlAGQAaQBhAC4AcAByAGoAXABSAGUAZwBFAHgAcAByAC4AaAAA/////wAA/AAAAF8AAAAAUgA1ADoAOgA6AEQAOgBcAFMAbwB1AHIAYwBlAHMAXABNAGUAZABpAGEAXABNAGUAZABpAGEALgBwAHIAagBcAFIAZQBzAG8AdQByAGMAZQAuAGgAAP////8AAPwAAABfAAAAAFIAMQAwADoAOgA6AEQAOgBcAFMAbwB1AHIAYwBlAHMAXABNAGUAZABpAGEAXABNAGUAZABpAGEALgBwAHIAagBcAFMAdABvAHIAZQAuAGMAcABwAQD/////AAH8AAAAWwAAAABOADEAMQA6ADoAOgBEADoAXABTAG8AdQByAGMAZQBzAFwATQBlAGQAaQBhAFwATQBlAGQAaQBhAC4AcAByAGoAXABTAHQAbwByAGUALgBoAAD/////AAAAAAAA2gAAAB4AMAAtADEANgAxADEAMQA4ADQAMgA2ADUAMgAzADAATgAABOcAAAEJAAAGhgAAA+IAAAAAAAAAAAAAB38AAAQ3AAAAAuoAAAAWAAAAAvsAAAAAAAAAAPsAAAAAAAAAAAAAAADaAAAAHgAwAC0AMQA2ADYANAA0ADAANwAyADQANAA4ADIANwBOAAAERQAAAbQAAAXpAAACrQAAAAAAAAAAAAAHfwAABDcAAAAC6gAAABYAAAAC+wAAAAAAAAAA+wAAAAAAAAAAAAAAAA=="/>
+				<mdistate v="AAAAAwAAAAIAAAAH2gAAAAIAMAAAAAAAAABFAAAGEgAABVsAAAAAAAAAAAAACf8AAAWfAAAAAuoAAAQ6AAAAAvsAAAAKAAAACgAAAAUAAAACAAAAAwAAAAkAAAAIAAAABAAAAAEAAAAAAAAABwAAAAb7AAAACgAAAAoAAAAJAAAACAAAAAUAAAAEAAAAAQAAAAAAAAAHAAAAAwAAAAYAAAAC/AAAAGMAAAAAVgA2ADoAOgA6AEQAOgBcAFMAbwB1AHIAYwBlAHMAXABNAGUAZABpAGEAXABNAGUAZABpAGEALgBwAHIAagBcAEMAaABhAG4AbgBlAGwAcwAuAGMAcABwAAD/////AAD8AAAAXwAAAABSADcAOgA6ADoARAA6AFwAUwBvAHUAcgBjAGUAcwBcAE0AZQBkAGkAYQBcAE0AZQBkAGkAYQAuAHAAcgBqAFwAQwBoAGEAbgBuAGUAbABzAC4AaAAA/////wAA/AAAAFsAAAAATgAzADoAOgA6AEQAOgBcAFMAbwB1AHIAYwBlAHMAXABNAGUAZABpAGEAXABNAGUAZABpAGEALgBwAHIAagBcAE0AZQBkAGkAYQAuAHIAYwAA/////wAA/AAAAGMAAAAAVgA0ADoAOgA6AEQAOgBcAFMAbwB1AHIAYwBlAHMAXABNAGUAZABpAGEAXABNAGUAZABpAGEALgBwAHIAagBcAE0AZQBkAGkAYQBEAGwAZwAuAGMAcABwAAD/////AAD8AAAAYwAAAABWADgAOgA6ADoARAA6AFwAUwBvAHUAcgBjAGUAcwBcAE0AZQBkAGkAYQBcAE0AZQBkAGkAYQAuAHAAcgBqAFwATQBlAGQAaQBhAEQAbwBjAC4AYwBwAHAAAP////8AAPwAAABJAAAAADwAOQA6ADoAOgBEADoAXABTAG8AdQByAGMAZQBzAFwATQBlAGQAaQBhAFwAUgBFAEEARABNAEUALgBtAGQBAP////8AAfwAAABdAAAAAFAAMgA6ADoAOgBEADoAXABTAG8AdQByAGMAZQBzAFwATQBlAGQAaQBhAFwATQBlAGQAaQBhAC4AcAByAGoAXABSAGUAZwBFAHgAcAByAC4AaAAA/////wAA/AAAAF8AAAAAUgA1ADoAOgA6AEQAOgBcAFMAbwB1AHIAYwBlAHMAXABNAGUAZABpAGEAXABNAGUAZABpAGEALgBwAHIAagBcAFIAZQBzAG8AdQByAGMAZQAuAGgAAP////8AAPwAAABfAAAAAFIAMQAwADoAOgA6AEQAOgBcAFMAbwB1AHIAYwBlAHMAXABNAGUAZABpAGEAXABNAGUAZABpAGEALgBwAHIAagBcAFMAdABvAHIAZQAuAGMAcABwAAD/////AAD8AAAAWwAAAABOADEAMQA6ADoAOgBEADoAXABTAG8AdQByAGMAZQBzAFwATQBlAGQAaQBhAFwATQBlAGQAaQBhAC4AcAByAGoAXABTAHQAbwByAGUALgBoAAD/////AAAAAAAA2gAAAB4AMAAtADEANAAzADMAMQAxADkANwA5ADAAMgA2ADIATgAAAwIAAAFOAAAIAQAAA40AAAAAAAAAAAAACf8AAAWfAAAAAuoAAAAWAAAAAvsAAAAAAAAAAPsAAAAAAAAAAAAAAADaAAAAHgAwAC0AMQA0ADMAMQA1ADYAMQAxADYAOQAxADMAMQBOAAADCgAAAesAAAaVAAAFeQAAAAAAAAAAAAAJ/wAABZ8AAAAC6gAAABYAAAAC+wAAAAAAAAAA+wAAAAAAAAAAAAAAANoAAAAeADEALQAxADQAMwAxADUAOAA1ADQAMQA0ADMANgA3AE4AAAHgAAABRAAABt8AAAODAAAAAAAAAAAAAAn/AAAFnwAAAALqAAAAFgAAAAL7AAAAAAAAAAD7AAAAAAAAAAAAAAAA2gAAAB4AMAAtADEANAA3ADcAMgA2ADEAMQAxADAAMQAzADYATgAAA98AAAB2AAAHDwAAA0EAAAAAAAAAAAAACf8AAAWfAAAAAuoAAAAWAAAAAvsAAAAAAAAAAPsAAAAAAAAAAAAAAADaAAAAHgAwAC0AMQA1ADkAMQA3ADMAMgA1ADcANwA2ADAAOABOAAAD+AAAAeYAAAd+AAACagAAAAAAAAAAAAAJ/wAABZ8AAAAC6gAAABYAAAAC+wAAAAAAAAAA+wAAAAAAAAAAAAAAANoAAAAeADAALQAxADUAOQAxADcAMwA1ADkANQAyADAANgA1AE4AAAQkAAAAFAAABToAAAVKAAAAAAAAAAAAAAn/AAAFnwAAAALqAAAAFgAAAAL7AAAAAAAAAAD7AAAAAAAAAAAAAAAA"/>
 				<fullscreen_layout version="1" state="N" fullscreen="0">
 					<toolwindowinfo>
 						<p n="_tbannotations_browser_form" f="0"/>
@@ -1337,83 +1335,83 @@
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
 			<view ln=".2142" cl="11" le="0" cx="10" cy="1" wi="5" bi="1" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
-		<buffer bn="..\Media.prj\MediaDlg.cpp" dn="" mtn="">
-			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="86049376" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".1271" cl="42" le="0" cx="41" cy="25" wi="5" bi="2" ht="0" hn="0" hf="0" hc="4" hb="4"/>
-		</buffer>
 		<buffer bn="..\Media.prj\Channels.h" dn="" mtn="">
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".974" cl="16" le="0" cx="15" cy="17" wi="5" bi="5" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".974" cl="16" le="0" cx="15" cy="17" wi="5" bi="2" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\Media.prj\Channels.cpp" dn="" mtn="">
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".147" cl="30" le="0" cx="29" cy="12" wi="5" bi="6" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".147" cl="30" le="0" cx="29" cy="12" wi="5" bi="3" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\Media.prj\MediaDoc.cpp" dn="" mtn="">
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".2641" cl="1" le="0" cx="0" cy="13" wi="5" bi="7" ht="0" hn="0" hf="0" hc="4" hb="4"/>
-		</buffer>
-		<buffer bn="..\Media.prj\Media.rc" dn="" mtn="">
-			<bi ma="1 74 1" tabs="2 " wws="1" iwt="" st="0" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="85066272" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="73" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".8884" cl="71" le="0" cx="70" cy="34" wi="5" bi="8" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".2641" cl="1" le="0" cx="0" cy="13" wi="5" bi="4" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\Media.prj\Resource.h" dn="" mtn="">
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".417" cl="9" le="0" cx="8" cy="0" wi="5" bi="9" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".417" cl="9" le="0" cx="8" cy="0" wi="5" bi="5" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
-		<buffer bn="..\README.md" dn="" mtn="">
-			<bi ma="1 74 1" tabs="2 " wws="1" iwt="" st="8" in="2" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="87032352" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="2" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".1650" cl="9" le="0" cx="8" cy="19" wi="5" bi="10" ht="0" hn="0" hf="0" hc="4" hb="4"/>
-		</buffer>
-		<buffer bn="..\Media.prj\Store.h" dn="" mtn="">
+		<buffer bn="..\Media.prj\MediaDlg.cpp" dn="" mtn="">
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".1024" cl="1" le="0" cx="0" cy="21" wi="5" bi="12" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".1271" cl="42" le="0" cx="41" cy="25" wi="5" bi="6" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+		</buffer>
+		<buffer bn="..\Media.prj\Media.rc" dn="" mtn="">
+			<bi ma="1 74 1" tabs="2 " wws="1" iwt="" st="0" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="73" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
+			<view ln=".8884" cl="71" le="0" cx="70" cy="34" wi="5" bi="7" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\Media.prj\Store.cpp" dn="" mtn="">
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".360" cl="3" le="0" cx="2" cy="18" wi="5" bi="11" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".2874" cl="4" le="0" cx="3" cy="30" wi="5" bi="8" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
-		<window x="1" y="27" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="2" font_info=",,," did="0" mi="*,,," pi="0">
+		<buffer bn="..\Media.prj\Store.h" dn="" mtn="">
+			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
+			<view ln=".1024" cl="1" le="0" cx="0" cy="21" wi="5" bi="9" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+		</buffer>
+		<buffer bn="..\README.md" dn="" mtn="">
+			<bi ma="1 74 1" tabs="2 " wws="1" iwt="" st="8" in="2" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="85983776" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="2" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
+			<view ln=".1498" cl="27" le="0" cx="26" cy="18" wi="5" bi="10" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+		</buffer>
+		<window x="1" y="1" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="2" font_info=",,," did="0" mi="*,,," pi="0">
 			<buffer bn="..\Media.prj\RegExpr.h" dn="" mtn=""/>
-			<view ln=".2142" cl="11" le="0" cx="10" cy="1" wi="301" bi="1" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".2142" cl="11" le="0" cx="10" cy="1" wi="13" bi="1" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<window x="1" y="27" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="7" font_info=",,," did="0" mi="*,,," pi="4">
+		<window x="1" y="1" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="7" font_info=",,," did="0" mi="*,,," pi="4">
 			<buffer bn="..\Media.prj\Channels.h" dn="" mtn=""/>
-			<view ln=".974" cl="16" le="0" cx="15" cy="17" wi="14" bi="5" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".974" cl="16" le="0" cx="15" cy="17" wi="16" bi="2" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<window x="1" y="27" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="6" font_info=",,," did="0" mi="*,,," pi="2">
+		<window x="1" y="1" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="6" font_info=",,," did="0" mi="*,,," pi="2">
 			<buffer bn="..\Media.prj\Channels.cpp" dn="" mtn=""/>
-			<view ln=".147" cl="30" le="0" cx="29" cy="12" wi="17" bi="6" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".147" cl="30" le="0" cx="29" cy="12" wi="19" bi="3" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<window x="1" y="27" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="8" font_info=",,," did="0" mi="*,,," pi="3">
+		<window x="1" y="1" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="8" font_info=",,," did="0" mi="*,,," pi="3">
 			<buffer bn="..\Media.prj\MediaDoc.cpp" dn="" mtn=""/>
-			<view ln=".2641" cl="1" le="0" cx="0" cy="13" wi="20" bi="7" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".2641" cl="1" le="0" cx="0" cy="13" wi="22" bi="4" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<window x="1" y="27" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="5" font_info=",,," did="0" mi="*,,," pi="0">
+		<window x="1" y="1" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="5" font_info=",,," did="0" mi="*,,," pi="0">
 			<buffer bn="..\Media.prj\Resource.h" dn="" mtn=""/>
-			<view ln=".417" cl="9" le="0" cx="8" cy="0" wi="300" bi="9" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".417" cl="9" le="0" cx="8" cy="0" wi="25" bi="5" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<window x="1" y="27" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="11" font_info=",,," did="0" mi="*,,," pi="0">
-			<buffer bn="..\Media.prj\Store.h" dn="" mtn=""/>
-			<view ln=".1024" cl="1" le="0" cx="0" cy="21" wi="310" bi="12" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+		<window x="1" y="1" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="4" font_info=",,," did="0" mi="*,,," pi="1">
+			<buffer bn="..\Media.prj\MediaDlg.cpp" dn="" mtn=""/>
+			<view ln=".1271" cl="42" le="0" cx="41" cy="25" wi="28" bi="6" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+		</window>
+		<window x="1" y="1" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="3" font_info="Default Unicode Font,11,0,1" did="0" mi="*,,," pi="0">
+			<buffer bn="..\Media.prj\Media.rc" dn="" mtn=""/>
+			<view ln=".8884" cl="71" le="0" cx="70" cy="34" wi="31" bi="7" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
 		<window x="1" y="1" width="1019" height="657" icon_x="0" icon_y="0" state="N" wf="0" wt="10" font_info=",,," did="0" mi="*,,," pi="0">
 			<buffer bn="..\Media.prj\Store.cpp" dn="" mtn=""/>
-			<view ln=".2874" cl="4" le="0" cx="3" cy="33" wi="313" bi="11" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".2874" cl="4" le="0" cx="3" cy="30" wi="34" bi="8" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<window x="1" y="27" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="4" font_info=",,," did="0" mi="*,,," pi="1">
-			<buffer bn="..\Media.prj\MediaDlg.cpp" dn="" mtn=""/>
-			<view ln=".1271" cl="42" le="0" cx="42" cy="25" wi="305" bi="2" ht="0" hn="0" hf="0" hc="4" hb="4"/>
-		</window>
-		<window x="1" y="27" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="3" font_info="Default Unicode Font,11,0,1" did="0" mi="*,,," pi="0">
-			<buffer bn="..\Media.prj\Media.rc" dn="" mtn=""/>
-			<view ln=".8884" cl="71" le="0" cx="71" cy="34" wi="23" bi="8" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+		<window x="1" y="1" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="11" font_info=",,," did="0" mi="*,,," pi="0">
+			<buffer bn="..\Media.prj\Store.h" dn="" mtn=""/>
+			<view ln=".1024" cl="1" le="0" cx="0" cy="21" wi="37" bi="9" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
 		<window x="1" y="27" width="1299" height="910" icon_x="0" icon_y="0" state="N" wf="0" wt="9" font_info=",,," did="0" mi="*,,," pi="0">
 			<buffer bn="..\README.md" dn="" mtn=""/>
-			<view ln=".1498" cl="27" le="0" cx="27" cy="18" wi="307" bi="10" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".1498" cl="27" le="0" cx="27" cy="18" wi="40" bi="10" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<mdistate v="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"/>
+		<mdistate v="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"/>
 		<filehist>
 			<p n="..\Media.prj\Channels.h"/>
 			<p n="..\Media.prj\MediaDlg.cpp"/>
