@@ -44,5 +44,5 @@ inline void       invalidate() {theApp.invalidate();}
 inline MediaDoc*  doc()        {return theApp.doc();}
 inline MediaView* view()       {return theApp.view();}
 inline MainFrame* mainFrm()    {return theApp.mainFrm();}
-inline ToolBar&   getToolBar() {return mainFrm()->getToolBar();}
+inline MyToolBar& getToolBar() {return mainFrm()->getToolBar();}
 

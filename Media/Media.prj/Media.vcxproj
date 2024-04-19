@@ -151,6 +151,7 @@
     <ClInclude Include="Media.h" />
     <ClInclude Include="MediaDoc.h" />
     <ClInclude Include="MediaView.h" />
+    <ClInclude Include="MyToolBar.h" />
     <ClInclude Include="RegExpr.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="Media.cpp" />
     <ClCompile Include="MediaDoc.cpp" />
     <ClCompile Include="MediaView.cpp" />
+    <ClCompile Include="MyToolBar.cpp" />
     <ClCompile Include="RegExpr.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Store.cpp" />
