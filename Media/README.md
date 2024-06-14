@@ -36,6 +36,10 @@ Execute the msi file to install the app.
 
 ## Updates
 
+### Update 6/13/24
+
+Fix WinPos.
+
 ### Update 4/18/24
 
 Improved the way Toolbars and Window Position and size are handled.
