@@ -125,7 +125,7 @@ Datum*  dtm;
 int     i;
 
   for (dtm = iter(), ttlLng = 0; dtm; dtm = iter++)
-                                        {int lng = dtm->title.length();   if (lng > ttlLng) ttlLng = lng;}
+                                 {int lng = dtm->title.length();   if (lng > ttlLng) ttlLng = lng;}
   notePad.clear();
 
   for (dtm = iter(), i = 0; dtm; dtm = iter++, i++) {if (i) notePad << nCrlf;   dtm->display();}
@@ -163,45 +163,4 @@ void Datum::copy(Datum& d) {
 
 
 
-
-#if 1
-#else
-WrapIter  iter(wrp);
-WrapData* wd;
-int       i;
-
-  notePad << nClrTabs << nSetTab(TabVal) << nTab;       // The tab is set to the same value as in wrap
-
-  for (wd = iter(), i = 0; wd; wd = iter++, i++) {
-    if (i) notePad << nTab;
-
-    notePad << wd->line << nCrlf;
-    }
-
-  return i;
-#endif
-
-
-#if 0
-Datum* Store::find(TCchar* target) {regExpr.setPattern(target);   findX = -1;   return findNext();}
-
-
-Datum* Store::findNext() {
-  for (findX++; findX < nData(); findX++) {
-    Datum* dtm = data[findX].p;
-
-    if (dtm && regExpr.match(dtm->title)) return dtm;
-    }
-
-  return 0;
-  }
-
-
-bool Store::delDatum(Datum* dtm) {
-
-  if (data[findX].p != dtm) return false;
-
-  data.del(findX);   findX--;   return true;
-  }
-#endif
 

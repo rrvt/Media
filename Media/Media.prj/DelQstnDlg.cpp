@@ -1,5 +1,5 @@
 // DelQstnDlg.cpp : implementation file
-//
+
 
 #include "stdafx.h"
 #include "DelQstnDlg.h"
@@ -15,8 +15,9 @@ BEGIN_MESSAGE_MAP(DelQstnDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-DelQstnDlg::DelQstnDlg(CWnd* pParent) : CDialogEx(IDD_DelQstn, pParent),title(_T("")), channel(_T("")),
-                                                            date(_T("")), name1(_T("")), name2(_T("")) { }
+DelQstnDlg::DelQstnDlg(CWnd* pParent) : CDialogEx(IDD_DelQstn, pParent), title(_T("")),
+                                        channel(_T("")), date(_T("")), name1(_T("")),
+                                        name2(_T("")) { }
 
 DelQstnDlg::~DelQstnDlg() { }
 
@@ -30,5 +31,3 @@ void DelQstnDlg::DoDataExchange(CDataExchange* pDX) {
   DDX_Text(pDX, IDC_Bob,        name2);
   }
 
-
-// DelQstnDlg message handlers

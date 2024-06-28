@@ -81,20 +81,6 @@ String path;
   }
 
 
-#if 0
-void Media::OnFilePrintSetup() {
-PrtrOrient orient;
-
-  view()->setPrntrOrient(getDevMode());
-
-    CWinApp::OnFilePrintSetup();
-
-  orient = view()->getPrntrOrient(getDevMode());
-
-  options.setOrient(orient);   view()->setOrientation(options.orient);
-  }
-#endif
-
 int Media::ExitInstance() {
 
 #ifdef DebugMemoryLeaks

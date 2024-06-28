@@ -55,18 +55,9 @@ public:
 
 
 #ifndef _DEBUG  // debug version in MediaView.cpp
-inline MediaDoc* MediaView::GetDocument() const
-   { return reinterpret_cast<MediaDoc*>(m_pDocument); }
+inline MediaDoc* MediaView::GetDocument() const {return reinterpret_cast<MediaDoc*>(m_pDocument);}
 #endif
 
 
 
-
-#if 1
-#else
-  virtual void OnPrepareDC(CDC* pDC, CPrintInfo* pInfo = NULL);
-  virtual void onPrepareOutput(bool printing);
-
-  virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
-#endif
 

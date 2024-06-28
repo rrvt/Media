@@ -1,34 +1,43 @@
 [SolutionInfo]
+RootPath=D:\Sources\Media
 Path=D:\Sources\Media\Media\Media.sln
 Name=Media
-Version=2.0
+Version=2.100000
 [DefaultPath]
-NPaths=2
+NPaths=4
 DefKey0=Icon
-Icon.Path=D:\Sources\Media\Media.prj\res\
+Icon.Path=D:\Sources\Library\License\
 DefKey1=Media.ftr
 Media.ftr.Path=D:\Sources\Media\Release\
+DefKey2=License.ftr
+License.ftr.Path=D:\Sources\Library\License\
+DefKey3=License
+License.Path=D:\Sources\Library\License\
 [Icons]
-NoIcons=1
+NoIcons=2
 [Icon00]
 IconID=Media
 WixID=Media_Icon.exe
 IconPath=D:\Sources\Media\Media.prj\res\Media.ico
+[Icon01]
+IconID=MITLicense
+WixID=MITLicense_Icon.exe
+IconPath=D:\Sources\Library\License\MITLicense.ico
 [Product]
 ProductName=Media List
 Company=Bob -- K6RWY
 WixName=Media
-WixVersion=1.0.2.0
-UpgradeGUID=59933A07-E885-4630-9C63-9D95D4998E7B
+WixVersion=1.1.1.0
+UpgradeCode=59933A07-E885-4630-9C63-9D95D4998E7B
 SaveVerAllowed=0
-LicenseRequired=0
-LicensePath=D:\Sources\Media\Media\
+LicenseRequired=1
+LicensePath=D:\Sources\Library\License\MITLicenseFile.rtf
 IconID=Media
 [PFFDirectories]
 NoDirectories=1
 [PFFDirDesc00]
 ID=Media
-WixID=Media.pff
+WixID=MEDIA.PFF
 Parent=
 Name=Media
 HasChildren=0
@@ -36,13 +45,13 @@ HasChildren=0
 NoDirectories=1
 [PMFDirDesc00]
 ID=Media List
-WixID=MediaList.pmf
+WixID=Media_List.pmf
 Parent=
 Name=Media List
 HasChildren=0
 [Features]
-Count=1
-CurSel=Media
+Count=2
+CurSel=License
 [Ftr00]
 FeatureID=Media
 ProgramID=Media
@@ -62,3 +71,15 @@ IsVersionAvail=1
 ID=Help
 Path=D:\Sources\Media\Release\Media.chm
 Guid=8A7D2422-3210-40E8-82D0-4A2CC17D4E76
+[Ftr01]
+FeatureID=License
+ProgramID=Media
+StartMenuID=Media List
+CurSel=MIT License
+NoComponents=1
+[Ftr01Cmp00]
+ID=MIT License
+Path=D:\Sources\Library\License\MITLicenseFile.rtf
+Guid=62EA2FA8-8452-488B-BF21-479ABFD12A7C
+IconID=MITLicense
+IsStartMenu=1

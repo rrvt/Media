@@ -89,9 +89,3 @@ private:
   };
 
 
-
-
-
-//Tchar   line[512];
-//  void   searchFile(FILE* lu, processLine&);
-

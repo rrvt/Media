@@ -20,19 +20,20 @@
 #include "Resource.h"
 
 
-static TCchar* Expl =_T("This is an unachored search of the title screen with the regular expression ")
-                     _T("target in the edit box below.\n\n")
-                     _T("  ^  - At beginning of line indicates an achored match\n")
-                     _T("  $  - At end of line must match the end of the line\n")
-                     _T("  .  - Matches any character\n")
-                     _T("  [] - Set, Collection of characters to match at the position in the line\n")
-                     _T("  *  - Kleene Closure of preceding pattern (Tchar, metachar or set\n")
-                     _T("  \\  - Escape, next character used literally\n")
-                     _T("  \\t - Tab character\n\n")
-                     _T("  Sets (i.e. [...])\n")
-                     _T("  ^  - When First character in set, indicates match is not a character in set\n")
-                     _T("  -  - When not first character indicates an inclusive range of characters\n")
-                     _T("  \\  - Escape, When not last character in set, include next character in set");
+static TCchar* Expl =
+              _T("This is an unachored search of the title screen with the regular expression ")
+              _T("target in the edit box below.\n\n")
+              _T("  ^  - At beginning of line indicates an achored match\n")
+              _T("  $  - At end of line must match the end of the line\n")
+              _T("  .  - Matches any character\n")
+              _T("  [] - Set, Collection of characters to match at the position in the line\n")
+              _T("  *  - Kleene Closure of preceding pattern (Tchar, metachar or set\n")
+              _T("  \\  - Escape, next character used literally\n")
+              _T("  \\t - Tab character\n\n")
+              _T("  Sets (i.e. [...])\n")
+              _T("  ^  - When First character in set, indicates match is not a character in set\n")
+              _T("  -  - When not first character indicates an inclusive range of characters\n")
+              _T("  \\  - Escape, When not last character in set, include next character in set");
 
 
 IMPLEMENT_DYNCREATE(MediaDoc, CDoc)
@@ -67,8 +68,8 @@ int         i;
 
   notePad.clear();
 
-  for (dtm = srch(target), i = 0; dtm; dtm = srch++, i++) {if (i) notePad << nCrlf;    dtm->display();}
-
+  for (dtm = srch(target), i = 0; dtm; dtm = srch++, i++)
+                                                      {if (i) notePad << nCrlf;    dtm->display();}
   if (i) clipLine.clear();   display(NotePadSrc);
   }
 
@@ -81,16 +82,19 @@ Datum    d;
 
   dlg.bobPresent = dlg.maureenPresent = true;
 
-  if (dlg.DoModal() == IDOK) {
+  while (dlg.DoModal() == IDOK) {
 
-    d.title   = dlg.title;
-    d.channel = dlg.channel;   channels.add(d.channel);
-    Date x    = dlg.date;
-    d.date    = dlg.date;
-    d.comment = dlg.comment; d.bobPresent = dlg.bobPresent;  d.maureenPresent = dlg.maureenPresent;
-    store.add(d);
+    d.title          = dlg.title;
+    d.channel        = dlg.channel;
+    Date x           = dlg.date;
+    d.date           = dlg.date;
+    d.comment        = dlg.comment;
+    d.bobPresent     = dlg.bobPresent;
+    d.maureenPresent = dlg.maureenPresent;
 
-    onRefresh(); return;
+    if (d.title.isEmpty()) continue;
+
+    channels.add(d.channel);   store.add(d);   onRefresh();   return;
     }
 
   display(NotePadSrc);
@@ -115,6 +119,7 @@ bool        modMade = false;
     qstn.title = dtm->title;   qstn.channel = dtm->channel;
 
     if (qstn.DoModal() == IDOK) {
+
       MediaDlg med;
       med.title          = dtm->title;
       med.channel        = dtm->channel;
@@ -123,8 +128,7 @@ bool        modMade = false;
       med.bobPresent     = dtm->bobPresent;
       med.maureenPresent = dtm->maureenPresent;
 
-      if (med.DoModal() == IDOK) {
-        srch.del(dtm);
+      while (med.DoModal() == IDOK) {
         Datum d;
         d.title          = med.title;
         d.channel        = med.channel;
@@ -133,7 +137,10 @@ bool        modMade = false;
         d.bobPresent     = med.bobPresent;
         d.maureenPresent = med.maureenPresent;
         d.recentEdit     = true;
-        store.add(d);   modMade = true;    clipLine.clear();
+
+        if (d.title.isEmpty()) continue;
+
+        srch.del(dtm);   store.add(d);   clipLine.clear();   onRefresh();   return;
         }
       }
     }
@@ -191,9 +198,6 @@ StrSrchFld srchFld;
 void MediaDoc::onRefresh() {store.display();   display(NotePadSrc);}
 
 
-//void MediaDoc::OnOptions() {options(view());  view()->setOrientation(options.orient);}
-
-
 void MediaDoc::display(DataSource ds) {dataSource = ds; invalidate();}
 
 
@@ -209,7 +213,9 @@ DataSource stk = dataSource;   dataSource = StoreSrc;
 void MediaDoc::onFileSave() {
 DataSource stk = dataSource;
 
-  dataSource = NotePadSrc;   if (setSaveAsPath(pathDlgDsc)) OnSaveDocument(path);   dataSource = stk;
+  dataSource = NotePadSrc;   if (setSaveAsPath(pathDlgDsc)) OnSaveDocument(path);
+
+  dataSource = stk;
   }
 
 

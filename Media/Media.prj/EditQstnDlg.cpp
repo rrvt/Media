@@ -1,5 +1,5 @@
 // EditQstnDlg.cpp : implementation file
-//
+
 
 #include "stdafx.h"
 #include "Media.h"
@@ -17,7 +17,7 @@ END_MESSAGE_MAP()
 
 
 EditQstnDlg::EditQstnDlg(CWnd* pParent) : CDialogEx(IDD_EditQstn, pParent),
-                                                                        title(_T("")), channel(_T("")) { }
+                                                                 title(_T("")), channel(_T("")) { }
 
 EditQstnDlg::~EditQstnDlg() { }
 

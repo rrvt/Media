@@ -1,5 +1,5 @@
 // FindDlg.cpp : implementation file
-//
+
 
 #include "stdafx.h"
 #include "FindDlg.h"
@@ -18,7 +18,7 @@ END_MESSAGE_MAP()
 
 
 FindDlg::FindDlg(CWnd* pParent) : CDialogEx(IDD_FindByTitle, pParent),
-                                                                   explanation(_T("")), target(_T("")) { }
+                                                            explanation(_T("")), target(_T("")) { }
 
 FindDlg::~FindDlg() { }
 

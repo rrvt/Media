@@ -112,15 +112,15 @@ Tchar ch = *s;
 
   switch (pat->key) {
 
-    case Any          : if (ch && ch != _T('\n')) return 1;     break;
+    case Any          : if (ch && ch != _T('\n')) return 1;  break;
 
-    case Ch           : if (pat->ch == ch) return 1;       break;
+    case Ch           : if (pat->ch == ch) return 1;         break;
 
     case Eol          : if (ch == _T('\n') || !ch) return 0; break;
 
     case CharClass    : if (inSet(ch, pat->set)) return 1;   break;
 
-    case KleeneClosure: break;
+    case KleeneClosure:                                      break;
     }
 
   return -1;
@@ -264,18 +264,4 @@ short i;
 
   for (i = 0; i < SetSize; i++) set[i] ^= -1L;
   }
-
-
-
-
-
-
-#if 0
-// Search a file for a regular expression
-
-void RegExpression::searchFile(FILE* lu, processLine&) {
-
-  while (_fgetts(line, noElements(line), lu)) if (match(line)) processLine(line);
-  }
-#endif
 

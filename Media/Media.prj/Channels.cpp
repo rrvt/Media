@@ -58,7 +58,7 @@ ChnIter  iter(*this);
 Channel* chn;
 
   for (chn = iter(); chn; chn = iter++)
-                              if (prfx == chn->name.substr(0, prfLng)) {name = chn->name;   return false;}
+                       if (prfx == chn->name.substr(0, prfLng)) {name = chn->name;   return false;}
   return true;
   }
 
@@ -72,7 +72,7 @@ String   key;
   iniFile.write(Section, NoChannelsKey, nData());
 
   for (chn = iter(), i = 0; chn; chn = iter++, i++)
-                      {key.format(_T("%s%03i"), KeyPrefix, i);   iniFile.write(Section, key, chn->name);}
+                {key.format(_T("%s%03i"), KeyPrefix, i);   iniFile.write(Section, key, chn->name);}
   }
 
 
