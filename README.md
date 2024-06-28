@@ -36,6 +36,10 @@ Execute the msi file to install the app.
 
 ## Updates
 
+### Update
+
+Add MIT License to installation.  Fix empty title issue.
+
 ### Update 6/13/24
 
 Fix WinPos.
