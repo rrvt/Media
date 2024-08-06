@@ -36,6 +36,10 @@ Execute the msi file to install the app.
 
 ## Updates
 
+### Update 8/5/24
+
+Library update.
+
 ### Update
 
 Add MIT License to installation.  Fix empty title issue.
