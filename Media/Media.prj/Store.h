@@ -6,7 +6,7 @@
 #include "CSVLex.h"
 #include "CSVOut.h"
 #include "Date.h"
-#include "DevBase.h"
+#include "DevStream.h"
 #include "ExpandableP.h"
 #include "IterT.h"
 #include "RegExpr.h"

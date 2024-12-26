@@ -3,7 +3,7 @@
 
 #pragma once
 #include "CScrView.h"
-#include "NotePadRpt.h"
+#include "ReportNtPd.h"
 
 
 class MediaDoc;
@@ -18,22 +18,28 @@ protected:
 
 public:
 
-  virtual ~MediaView() { }
+  virtual           ~MediaView() { }
 
-  virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+  virtual void       initNoteOrietn() { }
+  virtual void       saveNoteOrietn() { }
+  virtual void       initRptOrietn()  { }
+  virtual void       saveRptOrietn()  { }
+  virtual PrtrOrient getOrientation() {return prtNote.prtrOrietn;}
 
-  virtual void displayHeader(DevBase& dev);
-  virtual void displayFooter(DevBase& dev);
+  virtual BOOL       PreCreateWindow(CREATESTRUCT& cs);
 
-  virtual void onPreparePrinting(CPrintInfo* info) {prtNote.onPreparePrinting(info);}
-  virtual void onBeginPrinting();
-  virtual void onDisplayOutput();
+  virtual void       onDisplayOutput();
+  virtual void       displayHeader(DevStream& dev);
+  virtual void       displayFooter(DevStream& dev);
 
-  virtual void printHeader(DevBase& dev, int pageNo);
-  virtual void printFooter(DevBase& dev, int pageNo);
-  virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+  virtual void       onPreparePrinting(CPrintInfo* info) {prtNote.onPreparePrinting(info);}
+  virtual void       onBeginPrinting();
 
-  MediaDoc* GetDocument() const;
+  virtual void       printHeader(DevStream& dev, int pageNo);
+  virtual void       printFooter(DevStream& dev, int pageNo);
+  virtual void       OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+
+  MediaDoc*          GetDocument() const;
 
 public:
 

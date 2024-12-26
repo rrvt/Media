@@ -6,15 +6,22 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Media", "..\Media.prj\Media.vcxproj", "{14E1988F-6D7C-4FF8-958C-0966A56234FD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{38F19257-ED81-4125-B054-B57E80B17ACA} = {38F19257-ED81-4125-B054-B57E80B17ACA}
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B} = {CF57F3EC-D3DB-4469-8519-3F9D73785D9B}
 	EndProjectSection
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "MediaWix", "..\Media.wix\MediaWix.wixproj", "{C5E79EF7-7235-46A6-882F-2AA4922ED575}"
 	ProjectSection(ProjectDependencies) = postProject
-		{38F19257-ED81-4125-B054-B57E80B17ACA} = {38F19257-ED81-4125-B054-B57E80B17ACA}
 		{14E1988F-6D7C-4FF8-958C-0966A56234FD} = {14E1988F-6D7C-4FF8-958C-0966A56234FD}
+		{38F19257-ED81-4125-B054-B57E80B17ACA} = {38F19257-ED81-4125-B054-B57E80B17ACA}
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B} = {CF57F3EC-D3DB-4469-8519-3F9D73785D9B}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MediaHlp", "..\Media.hlp\MediaHlp.vcxproj", "{38F19257-ED81-4125-B054-B57E80B17ACA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Library", "..\..\Library\Library\Library.vcxproj", "{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{38F19257-ED81-4125-B054-B57E80B17ACA} = {38F19257-ED81-4125-B054-B57E80B17ACA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +40,10 @@ Global
 		{38F19257-ED81-4125-B054-B57E80B17ACA}.Debug|Win32.Build.0 = Debug|Win32
 		{38F19257-ED81-4125-B054-B57E80B17ACA}.Release|Win32.ActiveCfg = Release|Win32
 		{38F19257-ED81-4125-B054-B57E80B17ACA}.Release|Win32.Build.0 = Release|Win32
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Debug|Win32.Build.0 = Debug|Win32
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Release|Win32.ActiveCfg = Release|Win32
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,7 +9,7 @@
 #include "MediaDoc.h"
 #include "OptionsDlg.h"
 #include "Resource.h"
-#include "Resources.h"
+#include "ResourceData.h"
 #include "RptOrientDlgOne.h"
 
 
@@ -75,21 +75,21 @@ void MediaView::onDisplayOutput() {
   }
 
 
-void MediaView::displayHeader(DevBase& dev) {
+void MediaView::displayHeader(DevStream& dev) {
   switch(doc()->dataSrc()) {
     case NotePadSrc   : dspNote.dspHeader(dev);   break;
     }
   }
 
 
-void MediaView::displayFooter(DevBase& dev) {
+void MediaView::displayFooter(DevStream& dev) {
   switch(doc()->dataSrc()) {
     case NotePadSrc   : dspNote.dspFooter(dev);   break;
     }
   }
 
 
-void MediaView::printHeader(DevBase& dev, int pageNo) {
+void MediaView::printHeader(DevStream& dev, int pageNo) {
   switch(doc()->dataSrc()) {
     case NotePadSrc: prtNote.prtHeader(dev, pageNo);   break;
     }
@@ -100,7 +100,7 @@ void MediaView::printHeader(DevBase& dev, int pageNo) {
 // The output streaming functions are very similar to NotePad's streaming functions so it should
 // not be a great hardship to construct a footer.
 
-void MediaView::printFooter(DevBase& dev, int pageNo) {
+void MediaView::printFooter(DevStream& dev, int pageNo) {
   switch(doc()->dataSrc()) {
     case NotePadSrc : prtNote.prtFooter(dev, pageNo);  break;
     }
