@@ -6,15 +6,15 @@
 #include "AboutDlg.h"
 #include "Channels.h"
 #include "ResourceExtra.h"
-#include "IniFile.h"
+#include "IniFileEx.h"
 #include "MainFrame.h"
 #include "NotePad.h"
 #include "MediaDoc.h"
 #include "MediaView.h"
 
 
-Media   theApp;                         // The one and only Media object
-IniFile iniFile;
+Media     theApp;                         // The one and only Media object
+IniFileEx iniFile(theApp);
 
 
 // Media
@@ -33,7 +33,7 @@ String path;
 
   CWinAppEx::InitInstance();
 
-  iniFile.setAppDataPath(m_pszHelpFilePath, *this);
+  iniFile.setAppDataPath(m_pszHelpFilePath);
 
   path = iniFile.getAppDataPath(m_pszHelpFilePath);    path += _T("Store.csv");
 
@@ -81,14 +81,7 @@ String path;
   }
 
 
-int Media::ExitInstance() {
-
-#ifdef DebugMemoryLeaks
-  _CrtDumpMemoryLeaks();
-#endif
-
-  return CApp::ExitInstance();
-  }
+int Media::ExitInstance() {notePad.~NotePad();   return CApp::ExitInstance();}
 
 
 void Media::OnHelp() {

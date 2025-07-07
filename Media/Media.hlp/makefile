@@ -7,7 +7,7 @@ Media.chm : *.htm Media.hhp Media.hhc App.css
 Clean.cln    :
   @echo "Cleaning"
   cd $(MAKEDIR)
-  del /F Media.chm
+  if exist Media.chm del /F Media.chm
 
 
 Release/Media.chm : Media.chm
@@ -16,7 +16,7 @@ Release/Media.chm : Media.chm
 
 Release/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Release
-  del Media.chm
+  if exist Media.chm del /F Media.chm
   cd $(MAKEDIR)
 
 
@@ -26,7 +26,7 @@ Debug/Media.chm : Media.chm
 
 Debug/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Debug
-  del Media.chm
+  if exist Media.chm del /F Media.chm
   cd $(MAKEDIR)
 
 

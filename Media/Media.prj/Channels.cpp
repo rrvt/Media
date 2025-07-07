@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "Channels.h"
-#include "IniFile.h"
+#include "IniFileEx.h"
 
 Channels channels;
 
