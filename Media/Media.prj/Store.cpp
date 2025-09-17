@@ -25,7 +25,7 @@ Datum* StoreSearch::operator++ (int) {
 TCchar* s;
 
   for (index++; index < store.nData(); index++) {
-    Datum* dtm = store.data[index].p;
+    Datum* dtm = store.data[index];
 
     switch (srchFld) {
       case StrSrchCom   : s = dtm->comment; break;
@@ -41,7 +41,7 @@ TCchar* s;
 
 bool StoreSearch::del(Datum* dtm) {
 
-  if (store.data[index].p != dtm) return false;
+  if (store.data[index] != dtm) return false;
 
   store.data.del(index);   index--;   return true;
   }
