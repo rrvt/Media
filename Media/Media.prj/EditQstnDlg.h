@@ -13,8 +13,11 @@ class EditQstnDlg : public CDialogEx {
 
 public:
 
-CString title;
-CString channel;
+CString title{};
+CString channel{};
+CString dateTime{};
+CString maureen;
+CString bob;
 
            EditQstnDlg(CWnd* pParent = nullptr);   // standard constructor
   virtual ~EditQstnDlg();
@@ -29,4 +32,8 @@ protected:
   virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
   DECLARE_MESSAGE_MAP()
+
+public:
+
+  afx_msg void onDoNotEdit();
   };

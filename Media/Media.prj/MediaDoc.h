@@ -17,6 +17,7 @@ class MediaDoc : public CDoc {
 PathDlgDsc  pathDlgDsc;
 
 DataSource  dataSource;
+DisplayDir  lastDir{LowToHigh};
 
 String      dataPath;
 
@@ -29,7 +30,7 @@ public:
 
   DataSource dataSrc() {return dataSource;}
 
-  void       display(DataSource ds);
+  void       display(DataSource ds = NotePadSrc);
 
   void       loadData(TCchar* path);
   void       saveData(DataSource src);
@@ -51,6 +52,7 @@ private:
   void       testLine(int n);
   void       wholePage();
   StrSrchFld getSrchTgt(String& target);
+  void       refresh(DisplayDir dir = LowToHigh);
 
 // Generated message map functions
 
@@ -65,6 +67,8 @@ public:
   afx_msg void onEditMedia();
   afx_msg void onDelMedia();
   afx_msg void onRefresh();
+  afx_msg void onSortName();
+  afx_msg void onSortDate();
   afx_msg void onFileSave();
   };
 

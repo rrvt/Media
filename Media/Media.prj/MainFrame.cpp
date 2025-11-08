@@ -99,7 +99,12 @@ CRect r;
 LRESULT MainFrame::OnResetToolBar(WPARAM wParam, LPARAM lParam) {setupToolBar();  return 0;}
 
 
-void MainFrame::setupToolBar() {CRect winRect;   GetWindowRect(&winRect);   toolBar.set(winRect);}
+void MainFrame::setupToolBar() {
+CRect winRect;
+
+  GetWindowRect(&winRect);   toolBar.set(winRect);
+  toolBar.addMenu(ID_Menu,  IDR_TBMenu,  _T("Options"));
+  }
 
 
 // MainFrame diagnostics

@@ -2,16 +2,17 @@
 
 
 #pragma once
+#include "TBMenu.h"
 
 //#define ButtonDefs
-//#define DocViewTB
+#define DocViewTB
 
 
 #ifdef ButtonDefs
 #include "TBButton.h"
 #include "TBEditBox.h"
+
 #ifdef DocViewTB
-#include "TBMenu.h"
 #else
 #include "TBCbxMenu.h"
 #endif
@@ -32,12 +33,10 @@ TBEditBox editBox;
 
 #ifdef DocViewTB
 
-TBMenu    menu;
 TBMenu    menu1;
 
 #else
 
-TBCbxMenu cbxMenu;
 TBCbxMenu cbxMenu1;
 
 #endif
@@ -50,10 +49,11 @@ TBMenu    saveMenu;
 
 #else
 
-TBCboBx   cboBx1;
 
 #endif
 #endif
+
+TBMenu    menu;
 
 public:
 
@@ -64,9 +64,10 @@ public:
   bool    addEditBox(uint id, int     noChars);
   CString getText(uint id);
 
+  bool    addMenu(   uint id, int     idr, TCchar* caption);
+
 #ifdef DocViewTB
 
-  bool    addMenu(   uint id, int     idr, TCchar* caption);
   bool    addMenu(   uint id, int     idr, int     index);
   bool    addMenu(   uint id, CbxItem cbxItem[], int n, TCchar* caption);
 

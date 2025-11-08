@@ -20,7 +20,6 @@ IniFileEx iniFile(theApp);
 // Media
 
 BEGIN_MESSAGE_MAP(Media, CWinAppEx)
-//  ON_COMMAND(ID_FILE_PRINT_SETUP, &OnFilePrintSetup)
   ON_COMMAND(ID_Help,             &OnHelp)
   ON_COMMAND(ID_App_About,        &OnAppAbout)
 END_MESSAGE_MAP()
@@ -92,4 +91,9 @@ String topic = m_pszHelpFilePath; topic += _T(">Introduction");
 
 
 void Media::OnAppAbout() {AboutDlg aboutDlg; aboutDlg.DoModal();}
+
+
+
+////---------------
+//  ON_COMMAND(ID_FILE_PRINT_SETUP, &OnFilePrintSetup)
 

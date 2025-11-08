@@ -10,17 +10,18 @@ class MediaDlg : public CDialogEx {
 
 public:
 
-Cstring       title;
-Cstring       channel;
-COleDateTime  date;
-Cstring       comment;
-BOOL          bobPresent;
-BOOL          maureenPresent;
+bool          addRecord{true};
+Cstring       title{};
+Cstring       channel{};
+COleDateTime  date{};
+Cstring       comment{};
+BOOL          bobPresent{};
+BOOL          maureenPresent{};
 
 CComboBox     channelCtl;
 CDateTimeCtrl dateCtl;
 
-               MediaDlg(CWnd* pParent = nullptr);   // standard constructor
+               MediaDlg(bool addRcd, CWnd* pParent = nullptr);   // standard constructor
   virtual     ~MediaDlg();
   virtual BOOL OnInitDialog();
   virtual void OnOK();
@@ -35,7 +36,15 @@ protected:
   virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
   DECLARE_MESSAGE_MAP()
+
+private:
+
+  bool checkDate();
+
 public:
-};
+
+  afx_msg void onDelete();
+  afx_msg void OnNMKillfocusDate(NMHDR* pNMHDR, LRESULT* pResult);
+  };
 
 

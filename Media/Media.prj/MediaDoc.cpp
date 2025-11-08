@@ -6,7 +6,6 @@
 #include "Channels.h"
 #include "ClipLine.h"
 #include "CopyFile.h"
-#include "DelQstnDlg.h"
 #include "EditQstnDlg.h"
 #include "ResourceExtra.h"
 #include "filename.h"
@@ -43,9 +42,13 @@ BEGIN_MESSAGE_MAP(MediaDoc, CDoc)
   ON_COMMAND(ID_Find,      &onFind)
   ON_COMMAND(ID_AddMedia,  &onAddMedia)
   ON_COMMAND(ID_EditMedia, &onEditMedia)
-  ON_COMMAND(ID_DelMedia,  &onDelMedia)
   ON_COMMAND(ID_Refresh,   &onRefresh)
   ON_COMMAND(ID_File_Save, &onFileSave)
+
+  ON_COMMAND(ID_Menu,      &onSortName)
+  ON_COMMAND(ID_SortName,  &onSortName)
+  ON_COMMAND(ID_SortDate,  &onSortDate)
+
 END_MESSAGE_MAP()
 
 
@@ -68,25 +71,25 @@ int         i;
 
   notePad.clear();
 
-  for (dtm = srch(target), i = 0; dtm; dtm = srch++, i++)
-                                                      {if (i) notePad << nCrlf;    dtm->display();}
+  for (dtm = srch(target), i = 0; dtm; dtm = srch++, i++) dtm->display();
+
   if (i) clipLine.clear();   display(NotePadSrc);
   }
 
 
 void MediaDoc::onAddMedia() {
-MediaDlg dlg;
+MediaDlg dlg(true);
 Datum    d;
+Date     today;
 
   notePad << nSetTab(10);
 
-  dlg.bobPresent = dlg.maureenPresent = true;
+  dlg.bobPresent = dlg.maureenPresent = true;   today.getToday();   dlg.date = today;
 
   while (dlg.DoModal() == IDOK) {
 
     d.title          = dlg.title;
     d.channel        = dlg.channel;
-    Date x           = dlg.date;
     d.date           = dlg.date;
     d.comment        = dlg.comment;
     d.bobPresent     = dlg.bobPresent;
@@ -97,7 +100,7 @@ Datum    d;
     channels.add(d.channel);   store.add(d);   onRefresh();   return;
     }
 
-  display(NotePadSrc);
+  display();
   }
 
 
@@ -106,6 +109,7 @@ String      target;
 StoreSearch srch(store);
 Datum*      dtm;
 bool        modMade = false;
+int         rslt;
 
   target = clipLine.clipped;   srch.setFld(getSrchTgt(target));
 
@@ -116,62 +120,43 @@ bool        modMade = false;
     if (dtm->recentEdit) continue;
 
     EditQstnDlg qstn;
-    qstn.title = dtm->title;   qstn.channel = dtm->channel;
+    qstn.title    = dtm->title;
+    qstn.channel  = dtm->channel;
+    qstn.dateTime = dtm->date.format(_T("%m/%d/%Y %H:%M"));
+    qstn.maureen  = dtm->maureenPresent ? _T("Maureen") : _T("");
+    qstn.bob      = dtm->bobPresent     ? _T("Bob")     : _T("");
 
-    if (qstn.DoModal() == IDOK) {
 
-      MediaDlg med;
-      med.title          = dtm->title;
-      med.channel        = dtm->channel;
-      med.date           = dtm->date;
-      med.comment        = dtm->comment;
-      med.bobPresent     = dtm->bobPresent;
-      med.maureenPresent = dtm->maureenPresent;
+    rslt = qstn.DoModal();
 
-      while (med.DoModal() == IDOK) {
-        Datum d;
-        d.title          = med.title;
-        d.channel        = med.channel;
-        d.date           = med.date;
-        d.comment        = med.comment;
-        d.bobPresent     = med.bobPresent;
-        d.maureenPresent = med.maureenPresent;
-        d.recentEdit     = true;
+    if (rslt == IDRETRY)  continue;
+    if (rslt != IDOK)     break;
 
-        if (d.title.isEmpty()) continue;
+    MediaDlg med(false);
+    med.title          = dtm->title;
+    med.channel        = dtm->channel;
+    med.date           = dtm->date;
+    med.comment        = dtm->comment;
+    med.bobPresent     = dtm->bobPresent;
+    med.maureenPresent = dtm->maureenPresent;
 
-        srch.del(dtm);   store.add(d);   clipLine.clear();   onRefresh();   return;
-        }
+    loop {
+      rslt = med.DoModal();
+
+      if (rslt == IDABORT) {srch.del(dtm);   clipLine.clear();   onRefresh();   return;}
+      if (rslt != IDOK) break;
+
+      Datum d;
+      d.title          = med.title;   d.title.trim();   if (d.title.isEmpty()) continue;
+      d.channel        = med.channel;
+      d.date           = med.date;
+      d.comment        = med.comment;
+      d.bobPresent     = med.bobPresent;
+      d.maureenPresent = med.maureenPresent;
+      d.recentEdit     = true;
+
+      srch.del(dtm);   store.add(d);   clipLine.clear();   onRefresh();   return;
       }
-    }
-
-  if (modMade) onRefresh();
-  }
-
-
-void MediaDoc::onDelMedia() {
-String      target;
-StoreSearch srch(store);
-Datum*      dtm;
-bool        modMade = false;
-
-  target = clipLine.clipped;   srch.setFld(getSrchTgt(target));
-
-  for (dtm = srch(target); dtm; dtm = srch++) dtm->recentEdit = false;
-
-  for (dtm = srch(target); dtm; dtm = srch++) {
-
-    if (dtm->recentEdit) continue;
-
-    DelQstnDlg qstn;
-
-    qstn.title   = dtm->title;
-    qstn.channel = dtm->channel;
-    qstn.date    = dtm->date.format(_T("%m/%d/%y"));
-    qstn.name1   = dtm->maureenPresent ? _T("Maureen") : _T("");
-    qstn.name2   = dtm->bobPresent     ? _T("Bob")     : _T("");
-
-    if (qstn.DoModal() == IDOK) {srch.del(dtm);   modMade = true;}
     }
 
   if (modMade) onRefresh();
@@ -195,7 +180,14 @@ StrSrchFld srchFld;
   }
 
 
-void MediaDoc::onRefresh() {store.display();   display(NotePadSrc);}
+void MediaDoc::onSortName() {store.sort(NameSort);   refresh();}
+void MediaDoc::onSortDate() {store.sort(DateSort);   refresh(HighToLow);}
+
+
+void MediaDoc::onRefresh() {refresh(lastDir);}
+
+
+void MediaDoc::refresh(DisplayDir dir) {lastDir = dir;   store.display(dir);   display();}
 
 
 void MediaDoc::display(DataSource ds) {dataSource = ds; invalidate();}
@@ -252,4 +244,41 @@ void MediaDoc::serialize(Archive& ar) {
 void MediaDoc::AssertValid()          const {CDocument::AssertValid();}
 void MediaDoc::Dump(CDumpContext& dc) const {CDocument::Dump(dc);}
 #endif //_DEBUG
+
+
+
+
+/////-------------
+
+//  ON_COMMAND(ID_DelMedia,  &onDelMedia)
+//#include "DelQstnDlg.h"
+#if 0
+void MediaDoc::onDelMedia() {
+String      target;
+StoreSearch srch(store);
+Datum*      dtm;
+bool        modMade = false;
+
+  target = clipLine.clipped;   srch.setFld(getSrchTgt(target));
+
+  for (dtm = srch(target); dtm; dtm = srch++) dtm->recentEdit = false;
+
+  for (dtm = srch(target); dtm; dtm = srch++) {
+
+    if (dtm->recentEdit) continue;
+
+    DelQstnDlg qstn;
+
+    qstn.title   = dtm->title;
+    qstn.channel = dtm->channel;
+    qstn.date    = dtm->date.format(_T("%m/%d/%y"));
+    qstn.name1   = dtm->maureenPresent ? _T("Maureen") : _T("");
+    qstn.name2   = dtm->bobPresent     ? _T("Bob")     : _T("");
+
+    if (qstn.DoModal() == IDOK) {srch.del(dtm);   modMade = true;}
+    }
+
+  if (modMade) onRefresh();
+  }
+#endif
 

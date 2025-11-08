@@ -9,9 +9,13 @@
 #include "DevStream.h"
 #include "ExpandableP.h"
 #include "IterT.h"
+#include "qSort.h"
 #include "RegExpr.h"
 #include "Wrap.h"
 
+
+enum SortKey    {DateSort, NameSort};
+enum DisplayDir {LowToHigh, HighToLow};
 
 
 // This is the Datum record.  It can be a complex as necessary.
@@ -22,6 +26,7 @@
 // Note, the copy constructor and operator often call a private function that will do all the copying.
 
 class Datum {
+String key;
 public:
 String title;
 String channel;
@@ -41,16 +46,22 @@ bool   recentEdit;
   bool     load( CSVLex& lex);
   void     store(CSVOut& csv);
 
+  void     setKey(SortKey sortKey);
+
   void     display();
 
   Datum&   operator= (Datum& d) {copy(d); return *this;}
 
-  bool     operator== (Datum& d) {return title == d.title;}
-  bool     operator!= (Datum& d) {return title != d.title;}
+  bool     operator== (Datum& d) {return key == d.key;}
+//  bool     operator!= (Datum& d) {return title != d.title;}
+#if 1
+  auto     operator<=>  (Datum& d) {return key <=> d.key;}
+#else
   bool     operator>  (Datum& d) {return title >  d.title;}
   bool     operator<  (Datum& d) {return title <  d.title;}
   bool     operator>= (Datum& d) {return title >= d.title;}
   bool     operator<= (Datum& d) {return title <= d.title;}
+#endif
 
 private:
 
@@ -83,6 +94,8 @@ typedef IterT<Store, Datum> StrIter;                        // Iterator for the 
 
 class Store {
 
+SortKey                               sortKey{NameSort};
+
 ExpandableP<Datum, String, DatumP, 2> data;
 
 public:
@@ -93,12 +106,16 @@ public:
   void   load( Archive& ar);
   void   store(Archive& ar);
 
+  void   setSort(SortKey k);
+
   bool   isEmpty() {return data.end() == 0;}
 
-  void   add(Datum& d) {if (!d.title.isEmpty()) data = d;}
-  void   add(Datum* d) {if (d && !d->title.isEmpty())  data = d;}
+  void   add(Datum& d) {if (!d.title.isEmpty())        {d.setKey(sortKey);    data = d;}}
+  void   add(Datum* d) {if (d && !d->title.isEmpty())  {d->setKey(sortKey);   data = d;}}
 
-  void   display();
+  void   sort(SortKey k) {setSort(k);   qsort(&data[0], &data[nData()-1]);}
+
+  void   display(DisplayDir dir = LowToHigh);
 
 private:
 
@@ -120,14 +137,13 @@ enum StrSrchFld {StrSrchNil, StrSrchTitle, StrSrchChn, StrSrchDate, StrSrchCom};
 
 class StoreSearch {
 
-Store&        store;
-int           index;
-StrSrchFld    srchFld;
+StrIter       iter;
+StrSrchFld    srchFld{StrSrchNil};
 RegExpression reg;
 
 public:
 
-  StoreSearch(Store& str) : store(str), index(-1), srchFld(StrSrchNil) { }
+  StoreSearch(Store& str) : iter(str) { }
  ~StoreSearch() { }
 
   void   setFld(StrSrchFld fld) {srchFld = fld;}
@@ -138,7 +154,9 @@ public:
 
 private:
 
-  StoreSearch() : store(*(Store*)0) { }
+  bool compare(Datum* dtm);
+
+  StoreSearch() : iter(*(Store*)0) { }
   };
 
 

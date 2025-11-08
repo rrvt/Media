@@ -17,9 +17,18 @@ MyToolBar::MyToolBar() : button(ID_Button),  editBox(ID_EditBox), menu(ID_Menu),
                         {toolBarDim.initialize(NoOfButtonControls, NoOfButtons);}
 #else
 
-MyToolBar::MyToolBar() {toolBarDim.initialize(NoOfButtonControls, NoOfButtons);}
+MyToolBar::MyToolBar() : menu(ID_Menu) {toolBarDim.initialize(NoOfButtonControls, NoOfButtons);}
 
 #endif
+
+
+bool MyToolBar::addMenu(uint id, int idr, TCchar* caption) {
+int menuID  = menu.getId();
+
+  if (id == menuID)  return add(menu,     id, idr, caption);
+
+  return false;
+  }
 
 
 bool MyToolBar::addButton( uint id, TCchar* caption) {
@@ -47,30 +56,12 @@ CString MyToolBar::getText(uint id) {
 
 #ifdef DocViewTB
 
-bool MyToolBar::addMenu(uint id, int idr, TCchar* caption) {
-#ifdef ButtonDefs
-int menuID  = menu.getId();
-int menu1ID = menu1.getId();
-int saveID  = saveMenu.getId();
-
-  if (id == menuID)  return add(menu,     id, idr, caption);
-  if (id == menu1ID) return add(menu1,    id, idr, caption);
-  if (id == saveID)  return add(saveMenu, id, idr, caption);
-#endif
-  return false;
-  }
 
 
 bool MyToolBar::addMenu(uint id, int idr, int index) {
-#ifdef ButtonDefs
 int menuID  = menu.getId();
-int menu1ID = menu1.getId();
-int saveID  = saveMenu.getId();
 
   if (id == menuID)  return add(menu,     id, idr, index);
-  if (id == menu1ID) return add(menu1,    id, idr, index);
-  if (id == saveID)  return add(saveMenu, id, idr, index);
-#endif
   return false;
   }
 

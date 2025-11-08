@@ -37,6 +37,7 @@ static const int MinDate;           // Minimum No of Seconds allowed by MFC, Dat
   Date&      operator= (Date& date) {copy(date); return *this;}
 
   operator COleDateTime();
+  operator CTime() {return ctm;}
 
          void getToday();
 

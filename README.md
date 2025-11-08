@@ -36,6 +36,13 @@ Execute the msi file to install the app.
 
 ## Updates
 
+### Update 11/7/25
+
+Revamped the operations, moved the delete operator to the edit operation, added sort operations:
+sort by name and sort by date.  Change the find operation to present the most recent entry of
+multiple entries of a film.  The date operation also presents the most recent entries first in
+the list.
+
 ### Update 10/21/25
 
 Factored library into three parts, Library, Dialog, DocView.
