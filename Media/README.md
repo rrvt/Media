@@ -36,6 +36,10 @@ Execute the msi file to install the app.
 
 ## Updates
 
+### Update 11/8/25
+
+Store Path during debugging is different than for the release copy.
+
 ### Update 11/7/25
 
 Revamped the operations, moved the delete operator to the edit operation, added sort operations:

@@ -14,7 +14,7 @@ IMPLEMENT_DYNAMIC(EditQstnDlg, CDialogEx)
 
 BEGIN_MESSAGE_MAP(EditQstnDlg, CDialogEx)
     ON_BN_CLICKED(IDC_Cancel,   &OnCancel)
-    ON_BN_CLICKED(ID_DoNotEdit, &onDoNotEdit)
+    ON_BN_CLICKED(IDC_DoNotEdit, &onDoNotEdit)
 END_MESSAGE_MAP()
 
 

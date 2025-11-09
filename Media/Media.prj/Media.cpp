@@ -5,12 +5,13 @@
 #include "Media.h"
 #include "AboutDlg.h"
 #include "Channels.h"
-#include "ResourceExtra.h"
+#include "GetPathDlg.h"
 #include "IniFileEx.h"
 #include "MainFrame.h"
 #include "NotePad.h"
 #include "MediaDoc.h"
 #include "MediaView.h"
+#include "ResourceExtra.h"
 
 
 Media     theApp;                         // The one and only Media object
@@ -33,8 +34,6 @@ String path;
   CWinAppEx::InitInstance();
 
   iniFile.setAppDataPath(m_pszHelpFilePath);
-
-  path = iniFile.getAppDataPath(m_pszHelpFilePath);    path += _T("Store.csv");
 
   notePad.clear();
 
@@ -68,13 +67,29 @@ String path;
 
   if (!ProcessShellCommand(cmdInfo)) return FALSE;
 
+
   setAppName(_T("Media")); setTitle(_T("Media List"));
 
   view()->setFont(_T("Arial"), 12.0);
 
-  channels.load();
+#ifdef _DEBUG
+  if (!iniFile.read(GlobalSect, DBPathKey, path)) {
 
-  doc()->loadData(path);
+    path = doc()->getPathDlg(m_pszHelpFilePath);
+
+    if (path.isEmpty()) path = iniFile.getAppDataPath(m_pszHelpFilePath);
+    }
+#else
+
+  path = iniFile.getAppDataPath(m_pszHelpFilePath);
+
+#endif
+
+  if (!path.isEmpty()) {
+    channels.load();   path += _T("Store.csv");   doc()->loadData(path);
+
+    mainFrm()->setStatus(1, path);
+    }
 
   m_pMainWnd->ShowWindow(SW_SHOW);   m_pMainWnd->UpdateWindow();   return TRUE;
   }

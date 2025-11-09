@@ -6,6 +6,7 @@
 #include "AboutDlg.h"
 #include "Media.h"
 
+#include "MessageBox.h"
 
 
 // MainFrame
@@ -23,9 +24,7 @@ END_MESSAGE_MAP()
 
 static UINT indicators[] = {
   ID_SEPARATOR,           // status line indicator
-  ID_INDICATOR_CAPS,
-  ID_INDICATOR_NUM,
-  ID_INDICATOR_SCRL,
+  ID_INDICATOR_TXT
   };
 
 
@@ -36,7 +35,7 @@ MainFrame::~MainFrame() {winPos.~WinPos();}
 
 BOOL MainFrame::PreCreateWindow(CREATESTRUCT& cs) {
 
-  cs.style &= ~FWS_ADDTOTITLE;  cs.lpszName = _T("AddProj");    // Sets the default title left part
+  cs.style &= ~FWS_ADDTOTITLE;  cs.lpszName = _T("List");    // Sets the default title left part
 
   return CFrameWndEx::PreCreateWindow(cs);
   }
@@ -44,6 +43,7 @@ BOOL MainFrame::PreCreateWindow(CREATESTRUCT& cs) {
 
 int MainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
 CRect winRect;
+CRect r;
 
   if (CFrameWndEx::OnCreate(lpCreateStruct) == -1) return -1;
 
@@ -56,7 +56,6 @@ CRect winRect;
   addAboutToSysMenu(IDD_AboutBox, IDS_AboutBox);
 
   if (!statusBar.Create(this)) {TRACE0("Failed to create status bar\n"); return -1;}
-
   statusBar.SetIndicators(indicators, noElements(indicators));  //sizeof(indicators)/sizeof(UINT)
 
   GetWindowRect(&winRect);   winPos.initialPos(this, winRect);
@@ -65,6 +64,12 @@ CRect winRect;
 
   CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows7));
                                                                   // Affects look of toolbar, etc.
+  GetClientRect(&winRect);
+  int width = winRect.right - winRect.left;
+
+  statusBar.SetPaneWidth(statusBar.CommandToIndex(ID_SEPARATOR),     width/2);
+  statusBar.SetPaneWidth(statusBar.CommandToIndex(ID_INDICATOR_TXT), width/2);
+
   isInitialized = true;   return 0;
   }
 

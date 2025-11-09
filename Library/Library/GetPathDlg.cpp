@@ -53,7 +53,10 @@ CFolderPickerDialog dlg(path);
 
   if (!path.isEmpty()) dlg.m_ofn.lpstrInitialDir = path;
 
-  if (dlg.DoModal() == IDOK) {path = dlg.GetPathName(); return true;}
+  if (dlg.DoModal() == IDOK) {
+    path = dlg.GetPathName();   if (path[path.length()-1] != _T('\\')) path += _T("\\");
+    return true;
+    }
 
   return false;
   }

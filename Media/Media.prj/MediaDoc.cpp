@@ -7,16 +7,21 @@
 #include "ClipLine.h"
 #include "CopyFile.h"
 #include "EditQstnDlg.h"
-#include "ResourceExtra.h"
 #include "filename.h"
 #include "FindDlg.h"
 #include "GetPathDlg.h"
+#include "IniFileEx.h"
 #include "RegExpr.h"
 #include "Media.h"
 #include "MediaDlg.h"
 #include "MediaView.h"
 #include "NotePad.h"
 #include "Resource.h"
+#include "ResourceExtra.h"
+
+
+TCchar* GlobalSect = _T("Global");
+TCchar* DBPathKey  = _T("DBpath");
 
 
 static TCchar* Expl =
@@ -39,15 +44,17 @@ IMPLEMENT_DYNCREATE(MediaDoc, CDoc)
 
 
 BEGIN_MESSAGE_MAP(MediaDoc, CDoc)
-  ON_COMMAND(ID_Find,      &onFind)
-  ON_COMMAND(ID_AddMedia,  &onAddMedia)
-  ON_COMMAND(ID_EditMedia, &onEditMedia)
-  ON_COMMAND(ID_Refresh,   &onRefresh)
-  ON_COMMAND(ID_File_Save, &onFileSave)
-
-  ON_COMMAND(ID_Menu,      &onSortName)
-  ON_COMMAND(ID_SortName,  &onSortName)
-  ON_COMMAND(ID_SortDate,  &onSortDate)
+  ON_COMMAND(ID_Find,        &onFind)
+  ON_COMMAND(ID_AddMedia,    &onAddMedia)
+  ON_COMMAND(ID_EditMedia,   &onEditMedia)
+  ON_COMMAND(ID_Refresh,     &onRefresh)
+  ON_COMMAND(ID_File_Save,   &onFileSave)
+#ifdef _DEBUG
+  ON_COMMAND(ID_SpecifyPath, &onSpecifyPath)
+#endif
+  ON_COMMAND(ID_Menu,        &onSortName)
+  ON_COMMAND(ID_SortName,    &onSortName)
+  ON_COMMAND(ID_SortDate,    &onSortDate)
 
 END_MESSAGE_MAP()
 
@@ -202,6 +209,20 @@ DataSource stk = dataSource;   dataSource = StoreSrc;
   }
 
 
+void MediaDoc::onSpecifyPath() {getPathDlg(theApp.m_pszHelpFilePath);}
+
+
+TCchar* MediaDoc::getPathDlg(TCchar* helpPath) {
+String pth = ::getPath(helpPath);
+
+  path.clear();
+
+  if (!getDirPathDlg(_T("Debug Store Path"), pth)) return path;
+
+  path = pth;   iniFile.write(GlobalSect, DBPathKey, path);   return path;
+  }
+
+
 void MediaDoc::onFileSave() {
 DataSource stk = dataSource;
 
@@ -214,7 +235,7 @@ DataSource stk = dataSource;
 void MediaDoc::saveData(DataSource src) {
 DataSource stk = dataSource;
 
-  backupFile(10);   dataSource = src;   OnSaveDocument(dataPath);
+  if (!dataPath.isEmpty()) {backupFile(10);   dataSource = src;    OnSaveDocument(dataPath);}
 
   dataSource = stk;
   }

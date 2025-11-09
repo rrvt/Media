@@ -29,8 +29,8 @@
 #define IDC_Delete                      232
 #define IDC_Cancel                      232
 #define IDC_DateTime                    233
+#define IDC_DoNotEdit                   234
 
-#define ID_DoNotEdit                    234
 #define ID_Find                         400
 #define ID_AddMedia                     401
 #define ID_EditMedia                    402
@@ -42,6 +42,9 @@
 #define ID_SortName                     411
 #define ID_SortDate                     412
 #define ID_Options                      413
+#define ID_SpecifyPath                  414
+
+#define ID_INDICATOR_TXT        WM_USER + 1
 
 // Next default values for new objects
 //

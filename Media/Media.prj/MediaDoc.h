@@ -11,6 +11,10 @@ class FindDlg;
 
 enum DataSource {NotePadSrc, StoreSrc, FontSrc};
 
+extern TCchar* GlobalSect;
+extern TCchar* DBPathKey;
+
+
 
 class MediaDoc : public CDoc {
 
@@ -32,6 +36,7 @@ public:
 
   void       display(DataSource ds = NotePadSrc);
 
+  TCchar*    getPathDlg(TCchar* helpPath);
   void       loadData(TCchar* path);
   void       saveData(DataSource src);
 
@@ -70,5 +75,6 @@ public:
   afx_msg void onSortName();
   afx_msg void onSortDate();
   afx_msg void onFileSave();
+  afx_msg void onSpecifyPath();
   };
 
