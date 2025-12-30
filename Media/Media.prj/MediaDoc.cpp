@@ -17,11 +17,16 @@
 #include "MediaView.h"
 #include "NotePad.h"
 #include "Resource.h"
-#include "ResourceExtra.h"
+#include "WatcherNamesDlg.h"
 
 
-TCchar* GlobalSect = _T("Global");
-TCchar* DBPathKey  = _T("DBpath");
+TCchar* GlobalSect     = _T("Global");
+TCchar* DBPathKey      = _T("DBpath");
+TCchar* WatcherSect    = _T("WatcherNames");
+TCchar* FirstKey       = _T("First");
+TCchar* SecondKey      = _T("Second");
+TCchar* FirstPrsntKey  = _T("FirstPresent");
+TCchar* SecondPrsntKey = _T("SecondPresent");
 
 
 static TCchar* Expl =
@@ -44,17 +49,19 @@ IMPLEMENT_DYNCREATE(MediaDoc, CDoc)
 
 
 BEGIN_MESSAGE_MAP(MediaDoc, CDoc)
-  ON_COMMAND(ID_Find,        &onFind)
-  ON_COMMAND(ID_AddMedia,    &onAddMedia)
-  ON_COMMAND(ID_EditMedia,   &onEditMedia)
-  ON_COMMAND(ID_Refresh,     &onRefresh)
-  ON_COMMAND(ID_File_Save,   &onFileSave)
+  ON_COMMAND(ID_Find,            &onFind)
+  ON_COMMAND(ID_AddMedia,        &onAddMedia)
+  ON_COMMAND(ID_EditMedia,       &onEditMedia)
+  ON_COMMAND(ID_Refresh,         &onRefresh)
+  ON_COMMAND(ID_File_Save,       &onFileSave)
 #ifdef _DEBUG
-  ON_COMMAND(ID_SpecifyPath, &onSpecifyPath)
+  ON_COMMAND(ID_SpecifyPath,     &onSpecifyPath)
 #endif
-  ON_COMMAND(ID_Menu,        &onSortName)
-  ON_COMMAND(ID_SortName,    &onSortName)
-  ON_COMMAND(ID_SortDate,    &onSortDate)
+  ON_COMMAND(ID_Menu,            &onSortName)
+  ON_COMMAND(ID_SortName,        &onSortName)
+  ON_COMMAND(ID_SortDate,        &onSortDate)
+  ON_COMMAND(ID_SetWatcherNames, &onSetWatcherNames)
+
 
 END_MESSAGE_MAP()
 
@@ -62,7 +69,13 @@ END_MESSAGE_MAP()
 // MediaDoc construction/destruction
 
 
-MediaDoc::MediaDoc() noexcept : dataSource(NotePadSrc) { }
+MediaDoc::MediaDoc() noexcept : dataSource(NotePadSrc) {
+
+  iniFile.read(WatcherSect, FirstKey,       firstName);
+  iniFile.read(WatcherSect, FirstPrsntKey,  firstNamePrsnt, false);
+  iniFile.read(WatcherSect, SecondKey,      secondName);
+  iniFile.read(WatcherSect, SecondPrsntKey, secondNamePrsnt, false);
+  }
 
 
 MediaDoc::~MediaDoc() {if (!theApp.isSysClose()) {channels.store();   saveData(StoreSrc);}}
@@ -91,16 +104,23 @@ Date     today;
 
   notePad << nSetTab(10);
 
-  dlg.bobPresent = dlg.maureenPresent = true;   today.getToday();   dlg.date = today;
+  dlg.firstNamePrsnt = firstNamePrsnt;   dlg.secondNamePrsnt = secondNamePrsnt;
+  dlg.firstName      = firstName;        dlg.secondName      = secondName;
+
+  today.getToday();   dlg.date = today;
 
   while (dlg.DoModal() == IDOK) {
 
-    d.title          = dlg.title;
-    d.channel        = dlg.channel;
-    d.date           = dlg.date;
-    d.comment        = dlg.comment;
-    d.bobPresent     = dlg.bobPresent;
-    d.maureenPresent = dlg.maureenPresent;
+    d.title           = dlg.title;
+    d.channel         = dlg.channel;
+    d.date            = dlg.date;
+    d.comment         = dlg.comment;
+    d.firstName       = dlg.firstName;
+    d.secondName      = dlg.secondName;
+    d.firstNamePrsnt  = dlg.firstNamePrsnt;
+    d.secondNamePrsnt = dlg.secondNamePrsnt;
+    iniFile.write(WatcherSect, FirstPrsntKey,  d.firstNamePrsnt);
+    iniFile.write(WatcherSect, SecondPrsntKey, d.secondNamePrsnt);
 
     if (d.title.isEmpty()) continue;
 
@@ -127,12 +147,11 @@ int         rslt;
     if (dtm->recentEdit) continue;
 
     EditQstnDlg qstn;
-    qstn.title    = dtm->title;
-    qstn.channel  = dtm->channel;
-    qstn.dateTime = dtm->date.format(_T("%m/%d/%Y %H:%M"));
-    qstn.maureen  = dtm->maureenPresent ? _T("Maureen") : _T("");
-    qstn.bob      = dtm->bobPresent     ? _T("Bob")     : _T("");
-
+    qstn.title      = dtm->title;
+    qstn.channel    = dtm->channel;
+    qstn.dateTime   = dtm->date.format(_T("%m/%d/%Y %H:%M"));
+    qstn.firstName  = dtm->firstNamePrsnt  ? dtm->firstName.str()  : _T("");
+    qstn.secondName = dtm->secondNamePrsnt ? dtm->secondName.str() : _T("");
 
     rslt = qstn.DoModal();
 
@@ -140,12 +159,14 @@ int         rslt;
     if (rslt != IDOK)     break;
 
     MediaDlg med(false);
-    med.title          = dtm->title;
-    med.channel        = dtm->channel;
-    med.date           = dtm->date;
-    med.comment        = dtm->comment;
-    med.bobPresent     = dtm->bobPresent;
-    med.maureenPresent = dtm->maureenPresent;
+    med.title           = dtm->title;
+    med.channel         = dtm->channel;
+    med.date            = dtm->date;
+    med.comment         = dtm->comment;
+    med.firstName       = dtm->firstName;
+    med.secondName      = dtm->secondName;
+    med.firstNamePrsnt  = dtm->firstNamePrsnt;
+    med.secondNamePrsnt = dtm->secondNamePrsnt;
 
     loop {
       rslt = med.DoModal();
@@ -154,13 +175,15 @@ int         rslt;
       if (rslt != IDOK) break;
 
       Datum d;
-      d.title          = med.title;   d.title.trim();   if (d.title.isEmpty()) continue;
-      d.channel        = med.channel;
-      d.date           = med.date;
-      d.comment        = med.comment;
-      d.bobPresent     = med.bobPresent;
-      d.maureenPresent = med.maureenPresent;
-      d.recentEdit     = true;
+      d.title           = med.title;   d.title.trim();   if (d.title.isEmpty()) continue;
+      d.channel         = med.channel;
+      d.date            = med.date;
+      d.comment         = med.comment;
+      d.firstName       = med.firstName;
+      d.secondName      = med.secondName;
+      d.firstNamePrsnt  = med.firstNamePrsnt;
+      d.secondNamePrsnt = med.secondNamePrsnt;
+      d.recentEdit      = true;
 
       srch.del(dtm);   store.add(d);   clipLine.clear();   onRefresh();   return;
       }
@@ -189,6 +212,20 @@ StrSrchFld srchFld;
 
 void MediaDoc::onSortName() {store.sort(NameSort);   refresh();}
 void MediaDoc::onSortDate() {store.sort(DateSort);   refresh(HighToLow);}
+
+
+void MediaDoc::onSetWatcherNames() {
+WatcherNamesDlg dlg;
+
+  iniFile.read(WatcherSect, FirstKey,  firstName);    dlg.firstWatcher  = firstName;
+  iniFile.read(WatcherSect, SecondKey, secondName);   dlg.secondWatcher = secondName;
+
+  if (dlg.DoModal() == IDOK) {
+    firstName =  dlg.firstWatcher;    iniFile.write(WatcherSect, FirstKey,  firstName);
+    secondName = dlg.secondWatcher;   iniFile.write(WatcherSect, SecondKey, secondName);
+    }
+  }
+
 
 
 void MediaDoc::onRefresh() {refresh(lastDir);}
@@ -293,8 +330,8 @@ bool        modMade = false;
     qstn.title   = dtm->title;
     qstn.channel = dtm->channel;
     qstn.date    = dtm->date.format(_T("%m/%d/%y"));
-    qstn.name1   = dtm->maureenPresent ? _T("Maureen") : _T("");
-    qstn.name2   = dtm->bobPresent     ? _T("Bob")     : _T("");
+    qstn.name1   = dtm->secondNamePrsnt ? _T("Maureen") : _T("");
+    qstn.name2   = dtm->firstNamePrsnt     ? _T("Bob")     : _T("");
 
     if (qstn.DoModal() == IDOK) {srch.del(dtm);   modMade = true;}
     }

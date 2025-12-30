@@ -13,13 +13,14 @@ IMPLEMENT_DYNAMIC(MediaDlg, CDialogEx)
 
 
 BEGIN_MESSAGE_MAP(MediaDlg, CDialogEx)
-    ON_BN_CLICKED(IDC_Delete, &MediaDlg::onDelete)
-  ON_NOTIFY(NM_KILLFOCUS, IDC_Date, &MediaDlg::OnNMKillfocusDate)
+  ON_BN_CLICKED(          IDC_Delete, &onDelete)
+  ON_NOTIFY(NM_KILLFOCUS, IDC_Date,   &OnNMKillfocusDate)
 END_MESSAGE_MAP()
 
 
-MediaDlg::MediaDlg(bool addRcd, CWnd* pParent) :
-                                               CDialogEx(IDD_Media, pParent), addRecord(addRcd) { }
+MediaDlg::MediaDlg(bool addRcd, CWnd* pParent) : CDialogEx(IDD_Media, pParent), addRecord(addRcd),
+              firstNamePrsnt(FALSE), firstName(_T("")), secondNamePrsnt(FALSE), secondName(_T(""))
+{ }
 
 MediaDlg::~MediaDlg() { }
 
@@ -46,16 +47,18 @@ CTime    maxDate(3000,12,31,0, 0, 0);
 
 
 void MediaDlg::DoDataExchange(CDataExchange* pDX) {
-  CDialogEx::DoDataExchange(pDX);
-  DDX_Text(        pDX, IDC_Title,   title);
-  DDX_CBString(    pDX, IDC_Channel, channel);
-  DDX_Control(     pDX, IDC_Channel, channelCtl);
-  DDX_Control(     pDX, IDC_Date,    dateCtl);
-  DDX_DateTimeCtrl(pDX, IDC_Date,    date);
-  DDX_Text(        pDX, IDC_Comment, comment);
-  DDX_Check(       pDX, IDC_Bob,     bobPresent);
-  DDX_Check(       pDX, IDC_Maureen, maureenPresent);
-  }
+    CDialogEx::DoDataExchange(pDX);
+    DDX_Text(pDX, IDC_Title, title);
+    DDX_CBString(    pDX, IDC_Channel,         channel);
+    DDX_Control(     pDX, IDC_Channel,         channelCtl);
+    DDX_Control(     pDX, IDC_Date,            dateCtl);
+    DDX_DateTimeCtrl(pDX, IDC_Date,            date);
+    DDX_Text(        pDX, IDC_Comment,         comment);
+    DDX_Check(       pDX, IDC_FirstNamePrsnt,  firstNamePrsnt);
+    DDX_Text(        pDX, IDC_FirstName,       firstName);
+    DDX_Check(       pDX, IDC_SecondNamePrsnt, secondNamePrsnt);
+    DDX_Text(        pDX, IDC_SecondName,      secondName);
+}
 
 
 void MediaDlg::OnOK() {

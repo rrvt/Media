@@ -26,6 +26,8 @@ static const int MinDate;           // Minimum No of Seconds allowed by MFC, Dat
 
   void       clear() {ctm = 0;}
 
+  bool       isMinDate() {return !ctm.GetTime();}
+
   Date       operator= (String& s);                  // Translates m/d/yy h/m/s all digits to CTime
   Date       operator= (CString& cs) {String s = cs; *this = s; return *this;}
   Date&      operator= (CTime& tm)   {ctm = tm;  return *this;}
@@ -33,7 +35,7 @@ static const int MinDate;           // Minimum No of Seconds allowed by MFC, Dat
   Date&      operator= (COleDateTime& ole);
 
   Date&      operator= (variant_t& v)
-        {double t; if (v.vt == VT_DATE) {t = v; t *= SecondsPerDay; ctm = time_t(t);} return *this;}
+       {double t; if (v.vt == VT_DATE) {t = v; t *= SecondsPerDay; ctm = time_t(t);} return *this;}
   Date&      operator= (Date& date) {copy(date); return *this;}
 
   operator COleDateTime();

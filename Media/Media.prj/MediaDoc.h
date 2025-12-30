@@ -4,6 +4,7 @@
 #pragma once
 #include "CDoc.h"
 #include "MainFrame.h"
+#include "PathDlgDsc.h"
 #include "Store.h"
 
 class FindDlg;
@@ -24,6 +25,11 @@ DataSource  dataSource;
 DisplayDir  lastDir{LowToHigh};
 
 String      dataPath;
+String      firstName;
+String      secondName;
+bool        firstNamePrsnt{false};
+bool        secondNamePrsnt{false};
+
 
 protected: // create from serialization only
 
@@ -74,6 +80,7 @@ public:
   afx_msg void onRefresh();
   afx_msg void onSortName();
   afx_msg void onSortDate();
+  afx_msg void onSetWatcherNames();
   afx_msg void onFileSave();
   afx_msg void onSpecifyPath();
   };

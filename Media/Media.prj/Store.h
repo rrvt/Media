@@ -32,19 +32,23 @@ String title;
 String channel;
 Date   date;
 String comment;
-bool   bobPresent;
-bool   maureenPresent;
+bool   firstNamePrsnt;
+bool   secondNamePrsnt;
+String firstName;
+String secondName;
 
 bool   recentEdit;
 
-  Datum() : bobPresent(false), maureenPresent(false), recentEdit(false) { }
+  Datum() : firstNamePrsnt(false), secondNamePrsnt(false), recentEdit(false) { }
   Datum(Datum& d) {copy(d);}
  ~Datum()        { }
 
   void     clear();
 
-  bool     load( CSVLex& lex);
-  void     store(CSVOut& csv);
+  bool     loadTitle(CSVLex& lex)                 {return getLexTok(lex, title);}
+  bool     loadVersion(CSVLex& lex, int& version) {return getLexTok(lex, version);}
+  bool     loadRest( CSVLex& lex, int version);
+  void     store(CSVOut& csv, int version);
 
   void     setKey(SortKey sortKey);
 
@@ -66,6 +70,7 @@ bool   recentEdit;
 private:
 
   bool getLexTok(CSVLex& lex, String& s);
+  bool getLexTok(CSVLex& lex, int&  val);
 
   void copy(Datum& d);
   };
@@ -94,8 +99,8 @@ typedef IterT<Store, Datum> StrIter;                        // Iterator for the 
 
 class Store {
 
+int                                   version;
 SortKey                               sortKey{NameSort};
-
 ExpandableP<Datum, String, DatumP, 2> data;
 
 public:

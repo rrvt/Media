@@ -36,6 +36,11 @@ Execute the msi file to install the app.
 
 ## Updates
 
+### Update 12/29/25
+
+Added the capability to change the two people that are watchers and yet retain the names in each
+record.
+
 ### Update 11/8/25
 
 Store Path during debugging is different than for the release copy.

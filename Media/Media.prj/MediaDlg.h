@@ -15,8 +15,10 @@ Cstring       title{};
 Cstring       channel{};
 COleDateTime  date{};
 Cstring       comment{};
-BOOL          bobPresent{};
-BOOL          maureenPresent{};
+BOOL          firstNamePrsnt{false};
+Cstring       firstName{};
+BOOL          secondNamePrsnt{false};
+Cstring       secondName{};
 
 CComboBox     channelCtl;
 CDateTimeCtrl dateCtl;

@@ -16,8 +16,8 @@ public:
 CString title{};
 CString channel{};
 CString dateTime{};
-CString maureen;
-CString bob;
+CString firstName;
+CString secondName;
 
            EditQstnDlg(CWnd* pParent = nullptr);   // standard constructor
   virtual ~EditQstnDlg();

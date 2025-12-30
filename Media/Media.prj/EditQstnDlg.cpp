@@ -18,19 +18,19 @@ BEGIN_MESSAGE_MAP(EditQstnDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-EditQstnDlg::EditQstnDlg(CWnd* pParent) : CDialogEx(IDD_EditQstn, pParent), maureen(_T(""))
-, bob(_T(""))
-{ }
+EditQstnDlg::EditQstnDlg(CWnd* pParent) : CDialogEx(IDD_EditQstn, pParent),
+                                                          firstName(_T("")), secondName(_T("")) { }
 
 EditQstnDlg::~EditQstnDlg() { }
 
+
 void EditQstnDlg::DoDataExchange(CDataExchange* pDX) {
     CDialogEx::DoDataExchange(pDX);
-    DDX_Text(pDX, IDC_TitleStg, title);
+    DDX_Text(pDX, IDC_TitleStg,   title);
     DDX_Text(pDX, IDC_ChannelStg, channel);
-    DDX_Text(pDX, IDC_DateTime, dateTime);
-    DDX_Text(pDX, IDC_Maureen, maureen);
-    DDX_Text(pDX, IDC_Bob, bob);
+    DDX_Text(pDX, IDC_DateTime,   dateTime);
+    DDX_Text(pDX, IDC_FirstName,  firstName);
+    DDX_Text(pDX, IDC_SecondName, secondName);
 }
 
 

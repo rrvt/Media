@@ -11,7 +11,7 @@ const int TabVal = 5;
 
 Store      store;                                        // Global since all classes need access
 static int ttlLng;
-
+TCchar*    VersionTitle = _T("Store Version");
 
 
 Datum* StoreSearch::operator() (TCchar* target) {
@@ -59,23 +59,35 @@ bool StoreSearch::del(Datum* dtm) {
 void Store::load(Archive& ar) {
 CSVLex lex(ar);
 Datum  dtm;
+String s;
 
-  data.clear();
+  data.clear();   version = 0;
 
-  while (dtm.load(lex) == true) {dtm.setKey(sortKey);   data = dtm;}
+  if (!dtm.loadTitle(lex)) return;
+
+  if (dtm.title == VersionTitle) {if (!dtm.loadVersion(lex, version)) return;}
+  else if (dtm.loadRest(lex, version)) {dtm.setKey(sortKey);   data = dtm;}
+
+  while (dtm.loadTitle(lex) && dtm.loadRest(lex, version)) {dtm.setKey(sortKey);   data = dtm;}
   }
 
 
-bool Datum::load(CSVLex& lex) {
+bool Datum::loadRest(CSVLex& lex, int version) {
 String s;
-
-  if (!getLexTok(lex, title)) return false;
 
   if (!getLexTok(lex, channel)) return false;
   if (!getLexTok(lex, s))       return false;   date << s;
   if (!getLexTok(lex, comment)) return false;
-  if (!getLexTok(lex, s))       return false;   bobPresent     = s == _T("1");
-  if (!getLexTok(lex, s))       return false;   maureenPresent = s == _T("1");
+  if (!getLexTok(lex, s))       return false;   firstNamePrsnt  = s == _T("1");
+  if (!getLexTok(lex, s))       return false;   secondNamePrsnt = s == _T("1");
+  if (version < 1) {
+    firstName  = _T("Bob");
+    secondName = _T("Maureen");
+    }
+  if (version >= 1) {
+    if (!getLexTok(lex, firstName))  return false;
+    if (!getLexTok(lex, secondName)) return false;
+    }
 
   return true;
   }
@@ -83,11 +95,22 @@ String s;
 
 void Datum::clear() {
   key.clear();   title.clear();   channel.clear();  date.clear();   comment.clear();
-  bobPresent = false; maureenPresent = false;   recentEdit = false;
+  firstNamePrsnt = false; secondNamePrsnt = false;   recentEdit = false;
   }
 
 
 //enum CSVtokCode {NoToken, WhiteToken, StringToken, CommaToken, EolToken, EOFToken, IllegalToken};
+
+bool Datum::getLexTok(CSVLex& lex, int&  val) {
+String s;
+uint   pos;
+
+  if (!getLexTok(lex, s)) return false;
+
+  val = s.stoi(pos);   return pos > 0;
+  }
+
+
 
 bool Datum::getLexTok(CSVLex& lex, String& s) {
 CSVtokCode code  = lex.get_token();    if (code == EOFToken) return false;
@@ -127,17 +150,30 @@ CSVOut  csv(ar);
 StrIter iter(*this);
 Datum*  dtm;
 
-  for (dtm = iter(); dtm; dtm = iter++) dtm->store(csv);
+  version = 1;
+
+  csv << VersionTitle << _T(',') << version << vCrlf;
+
+  for (dtm = iter(); dtm; dtm = iter++) dtm->store(csv, version);
   }
 
 
-void Datum::store(CSVOut& csv) {
-  csv << title.trim()   << _T(',');
-  csv << channel.trim() << _T(',');
-  csv << date           << _T(',');
-  csv << comment.trim() << _T(',');
-  csv << bobPresent     << _T(',');
-  csv << maureenPresent;
+void Datum::store(CSVOut& csv, int version) {
+  csv << title.trim();
+  csv << _T(',') << channel.trim();
+  csv << _T(',') << date;
+  csv << _T(',') << comment.trim();
+  csv << _T(',') << firstNamePrsnt;
+  csv << _T(',') << secondNamePrsnt;
+  if (version < 1) {
+    csv << _T(',') << _T("Bob");
+    csv << _T(',') << _T("Maureen");
+    }
+  else if (version >= 1) {
+    csv << _T(',') << firstName;
+    csv << _T(',') << secondName;
+    }
+
   csv << vCrlf;
   }
 
@@ -167,8 +203,8 @@ void Datum::display() {
   notePad << nTab << title;
   notePad << nTab << channel;
   notePad << nTab << date;
-  notePad << nTab << (bobPresent ? _T("Bob") : _T("  "));
-  notePad << nTab << (maureenPresent ? _T("Maureen") : _T(""));
+  notePad << nTab << (firstNamePrsnt  ? firstName.str()  : _T("  "));
+  notePad << nTab << (secondNamePrsnt ? secondName.str() : _T(""));
   notePad << nCrlf;
 
   if (!comment.isEmpty()) {
@@ -181,16 +217,34 @@ void Datum::display() {
 
 
 void Datum::copy(Datum& d) {
-  key            = d.key;
-  title          = d.title;
-  channel        = d.channel;
-  date           = d.date;
-  comment        = d.comment;
-  bobPresent     = d.bobPresent;
-  maureenPresent = d.maureenPresent;
-  recentEdit     = d.recentEdit;
+  key             = d.key;
+  title           = d.title;
+  channel         = d.channel;
+  date            = d.date;
+  comment         = d.comment;
+  firstNamePrsnt  = d.firstNamePrsnt;
+  secondNamePrsnt = d.secondNamePrsnt;
+  recentEdit      = d.recentEdit;
+  firstName       = d.firstName;
+  secondName      = d.secondName;
   }
 
 
 
+///------------------
+#if 0
+bool Datum::load(CSVLex& lex) {
+String s;
+
+  if (!getLexTok(lex, title)) return false;
+
+  if (!getLexTok(lex, channel)) return false;
+  if (!getLexTok(lex, s))       return false;   date << s;
+  if (!getLexTok(lex, comment)) return false;
+  if (!getLexTok(lex, s))       return false;   firstNamePrsnt  = s == _T("1");
+  if (!getLexTok(lex, s))       return false;   secondNamePrsnt = s == _T("1");
+
+  return true;
+  }
+#endif
 
